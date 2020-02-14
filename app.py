@@ -13,13 +13,15 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u
 mongo = PyMongo(app)
 
 @app.route('/')
+def helloka():
+    return 'books'
 @app.route('/books')
 def hello():
     return render_template("books.html", 
     books=mongo.db.books.find())
 
 
-if __name__ =="__main__":
+if __name__ == '__main__':
     app.run(host=os.environ.get('IP', default='127.0.0.1'), 
         port=int(os.environ.get('PORT', default=5000)), 
-        debug=False)
+        debug=True)
