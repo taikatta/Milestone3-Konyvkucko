@@ -16,7 +16,7 @@ mongo = PyMongo(app)
 def hello():
     return 'Konyvkucko'
 
-@app.route('/getbooks')
+@app.route('/books')
 def getbooks():
     return render_template("books.html", books=mongo.db.books.find())
 
