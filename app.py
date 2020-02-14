@@ -15,6 +15,8 @@ mongo = PyMongo(app)
 @app.route('/')
 def helloka():
     return 'books'
+
+    
 @app.route('/books')
 def hello():
     return render_template("books.html", 
