@@ -18,7 +18,8 @@ def hello():
 
 @app.route('/books')
 def getbooks():
-    return render_template("books.html", books=mongo.db.books.find())
+    return render_template("books.html", 
+    books=mongo.db.books.find())
 
 
 if __name__ =="__main__":
