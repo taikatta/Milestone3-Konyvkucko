@@ -29,7 +29,6 @@ def add_book():
     return render_template('addbook.html', title='Add Book')
 
 
-
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
     
