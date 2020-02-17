@@ -3,23 +3,19 @@
 <h2>Add book</h2>
 <div>
     <form action="{{ url_for('insert_book') }}" method="POST" class="col s12">
-            
-        <!-- Book title input -->
+
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">book_title</i>
+                <i class="fas fa-book"></i>
                 <input id="book_title" name="book_title" type="text" required>
                 <label for="book_title">Book Title</label>
             </div>
             
         </div>
         
-        <!-- Book author input -->
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">person</i>
+                <i class="fas fa-user-edit"></i>
                 <input id="author" name="author" type="text" required>
                 <label for="author">Author</label>
             </div>
@@ -27,39 +23,34 @@
         </div>
 
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">age_range</i>
+                <i class="fas fa-users"></i>
                 <input id="age_range" name="age_range" type="text" required>
-                <label for="age_range">age_range</label>
+                <label for="age_range">Age range</label>
             </div>
             
         </div>
 
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">book_cover</i>
+                <i class="fas fa-file-image"></i>
                 <input id="book_cover" name="book_cover" type="text" required>
-                <label for="book_cover">book_cover</label>
+                <label for="book_cover">Book cover</label>
             </div>
             
         </div>
 
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">summary</i>
+                <i class="fas fa-file-alt"></i>
                 <input id="summary" name="summary" type="text" required>
-                <label for="summary">summary</label>
+                <label for="summary">Summary</label>
             </div>
-            
         </div>
 
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">ISBN</i>
+                <i class="fas fa-barcode"></i>
                 <input id="ISBN" name="ISBN" type="number" required>
                 <label for="ISBN">ISBN</label>
             </div>
@@ -67,30 +58,27 @@
         </div>
 
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">nm_of_copies</i>
+                <i class="fas fa-book-open"></i>
                 <input id="nm_of_copies" name="nm_of_copies" type="number" required>
-                <label for="nm_of_copies">nm_of_copies</label>
+                <label for="nm_of_copies">Number of copies</label>
             </div>
             
         </div>
 
         <div class="row">
-            
             <div class="input-field col s12">
-                <i class="material-icons prefix">last_donated</i>
+                <i class="fas fa-calendar-alt"></i>
                 <input id="last_donated" name="last_donated" type="number" required>
-                <label for="last_donated">last_donated</label>
+                <label for="last_donated">Last donated</label>
             </div>
             
         </div>
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Add Task
-                <i class="material-icons right">Add book</i>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Book
+                <i class="fas fa-plus"></i>
               </button>
         </div>
-
     </form>
 </div>
 {% endblock%}
