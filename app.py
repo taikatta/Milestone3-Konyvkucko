@@ -13,17 +13,77 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u
 mongo = PyMongo(app)
 
 @app.route('/')
+@app.route('/home')
 def helloka():
-    return 'books'
+    return 'home'
 
     
 @app.route('/books')
-def hello():
+def allbooks():
     return render_template("books.html", 
+    books=mongo.db.books.find())
+"""
+
+@app.route('/add_book')
+def add_book():
+    return render_template('addbook.html',
     books=mongo.db.books.find())
 
 
+@app.route('/insert_book', methods=['POST'])
+def insert_book():
+    books = mongo.db.books
+    return 'itt vagyok'
+    books.insert_one({
+        'book_title': request.form['book_title'],
+        'author': request.form['author'],
+        'age_range':request.form['age_range'],
+        'book_cover': request.form['book_cover'],
+        'summary':request.form['summary'],
+        'ISBN':request.form['ISBN'],
+        'nm_of_copies':request.form['nm_of_copies'],
+        'last_donated':request.form['last_donated']
+    })
+
+    return 'most'
+
+    return redirect(url_for('allbooks'))
+
+"""
+
+@app.route('/add_book')
+def add_book():
+    
+    
+    return render_template('addbook.html', itle='Add Book')
+
+
+
+@app.route('/insert_book', methods=['POST'])
+def insert_book():
+    
+    books = mongo.db.books
+
+        
+    books.insert_one({
+            'book_title': request.form['book_title'],
+            'author': request.form['author'],
+            'age_range':request.form['age_range'],
+            'book_cover': request.form['book_cover'],
+            'summary':request.form['summary'],
+            'ISBN':request.form['ISBN'],
+            'nm_of_copies':request.form['nm_of_copies'],
+            'last_donated':request.form['last_donated']
+        
+        })
+    return redirect(url_for('allbooks'))
+
+
+
+
+
+
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP', default='127.0.0.1'), 
+    app.run(host=os.environ.get('IP'), 
         port=int(os.environ.get('PORT', default=5000)), 
         debug=True)

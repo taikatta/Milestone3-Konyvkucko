@@ -1,11 +1,17 @@
-<html>
-    <head>
+{% extends 'base.html' %} {% block content %}
 
-    </head>
-    <body>
-        {% for book in books %}
-            {{book.book_title}}
-            {{book.author}}
-        {% endfor %}
-    </body>
-</html>
+
+{% for book in books %}
+<section id="book">
+    <div>
+        {{book.book_title}}
+        <br>
+        {{book.author}}
+        <br>
+        <img class="book_cover" src="{{ book.book_cover }}">
+    </div>
+</section>
+{% endfor %}
+
+
+{% endblock %}
