@@ -22,40 +22,11 @@ def helloka():
 def allbooks():
     return render_template("books.html", 
     books=mongo.db.books.find())
-"""
+
 
 @app.route('/add_book')
 def add_book():
-    return render_template('addbook.html',
-    books=mongo.db.books.find())
-
-
-@app.route('/insert_book', methods=['POST'])
-def insert_book():
-    books = mongo.db.books
-    return 'itt vagyok'
-    books.insert_one({
-        'book_title': request.form['book_title'],
-        'author': request.form['author'],
-        'age_range':request.form['age_range'],
-        'book_cover': request.form['book_cover'],
-        'summary':request.form['summary'],
-        'ISBN':request.form['ISBN'],
-        'nm_of_copies':request.form['nm_of_copies'],
-        'last_donated':request.form['last_donated']
-    })
-
-    return 'most'
-
-    return redirect(url_for('allbooks'))
-
-"""
-
-@app.route('/add_book')
-def add_book():
-    
-    
-    return render_template('addbook.html', itle='Add Book')
+    return render_template('addbook.html', title='Add Book')
 
 
 
@@ -63,7 +34,6 @@ def add_book():
 def insert_book():
     
     books = mongo.db.books
-
         
     books.insert_one({
             'book_title': request.form['book_title'],
@@ -77,9 +47,6 @@ def insert_book():
         
         })
     return redirect(url_for('allbooks'))
-
-
-
 
 
 
