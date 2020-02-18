@@ -31,6 +31,10 @@ The purpose of the project is to build a full-stack site that allows the users t
 
 #### Fonts:
 
+I used Nunito Sans, from Google Fonts
+
+On fonts.google.com in the about section the description of the font is the following: Nunito is a well balanced sans serif typeface superfamily, with 2 versions: The project began with Nunito, created by Vernon Adams as a rounded terminal sans serif for display typography. Jacques Le Bailly extended it to a full set of weights, and an accompanying regular non-rounded terminal version, Nunito Sans.
+
 #### Colors:
 
 
