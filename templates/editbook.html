@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Add book</h2>
+<h3>Edit Book</h3>
 <div class="row">
-    <form action="{{ url_for('insert_book') }}" method="POST" class="col s12">
+    <form action="{{ url_for('update_book', book_id=book._id) }}" method="POST" class="col s12">
 
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">chrome_reader_mode</i>
-                <input id="book_title" name="book_title" type="text" required>
+                <input id="book_title" name="book_title" type="text" value="{{book.book_title}}" required>
                 <label for="book_title">Book Title</label>
             </div>
             
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input id="author" name="author" type="text" required>
+                <input id="author" name="author" type="text" value="{{book.author}}" required>
                 <label for="author">Author</label>
             </div>
             
@@ -25,7 +25,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">child_care</i>
-                <input id="age_range" name="age_range" type="text" required>
+                <input id="age_range" name="age_range" type="text" value="{{book.age_range}}" required>
                 <label for="age_range">Age range</label>
             </div>
             
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">crop_original</i>
-                <input id="book_cover" name="book_cover" type="text" required>
+                <input id="book_cover" name="book_cover" type="text" value="{{book.book_cover}}" required>
                 <label for="book_cover">Book cover</label>
             </div>
             
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">comment</i>
-                <input id="summary" name="summary" type="text" required>
+                <input id="summary" name="summary" type="text" value="{{book.summary}}" required></input>
                 <label for="summary">Summary</label>
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">line_weight</i>
-                <input id="ISBN" name="ISBN" type="number" required>
+                <input id="ISBN" name="ISBN" type="number" value="{{book.ISBN}}" required>
                 <label for="ISBN">ISBN</label>
             </div>
             
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">content_copy</i>
-                <input id="nm_of_copies" name="nm_of_copies" type="number" required>
+                <input id="nm_of_copies" name="nm_of_copies" type="number" value="{{book.nm_of_copies}}" required>
                 <label for="nm_of_copies">Number of copies</label>
             </div>
             
@@ -69,7 +69,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">date_range</i>
-                <input id="last_donated" name="last_donated" type="text" required>
+                <input id="last_donated" name="last_donated" type="text" value="{{book.last_donated}}" required>
                 <label for="last_donated">Last donated</label>
             </div>
             
@@ -81,5 +81,6 @@
         </div>
     </form>
 </div>
-{% endblock%}
 
+
+{% endblock %}
