@@ -5,6 +5,10 @@
 .btn {
     background-color: #4284A4;
 }
+
+.btn:hover{
+    background-color: #60a0bf;
+}
  
   /* label color */
   .input-field label {
@@ -15,3 +19,14 @@
   .input-field .prefix.active {
     color: #4284A4;
   }
+
+/* label focus color */
+.input-field input:focus + label {
+  color: #60a0bf !important;
+}
+
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid #60a0bf !important;
+  box-shadow: 0 1px 0 0 #60a0bf !important;
+}
