@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+html {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 .book_cover {
     height : 100px;
 }
