@@ -2,16 +2,16 @@
     height : 100px;
 }
 
-/* #book {
-    clear: both;
-    line-height: 0;
-    column-count: 4;
-    column-gap: 0px;
-
+.btn {
+    background-color: #4284A4;
 }
+ 
+  /* label color */
+  .input-field label {
+    color: #60a0bf;
+  }
 
-#book div{
-    width: 100%;
-    display: block;
-    
-} */
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #4284A4;
+  }
