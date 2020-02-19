@@ -2,6 +2,7 @@
 
 
 {% for book in books %}
+ <!-- 
 <section id="book">
     <div>
         {{book.book_title}}
@@ -10,7 +11,29 @@
         <br>
         <img class="book_cover" src="{{ book.book_cover }}">
     </div>
-</section>
+
+
+</section> 
+-->
+
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{ book.book_cover }}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{book.book_title}} <br> {{book.author}}<i class="material-icons right">more_vert</i></span>
+          
+          <p><a href="#">Edit - Admin only</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
+          <p>ISBN: {{ book.ISBN }}</p> 
+          <p>Age range: {{ book.age_range }}</p> 
+          <p>Summary: {{ book.summary }}</p>
+        </div>
+      </div>
+
+
 {% endfor %}
 
 
