@@ -12,29 +12,30 @@
                     <img class="activator" src="{{ book.book_cover }}">
                 </div>
 
-                <div class="card-reveal">
+                <div class="card-reveal hide-on-med-and-down">
                     <span class="card-title grey-text text-darken-4">{{book.book_title}}<i
                             class="material-icons right">close</i></span>
                     <p>{{ book.summary }}</p>
                 </div>
             </div>
-            <div class="col s12 m6 l4 card-content">
+            <div class="col s12 m6 l8 card-content">
 
                 <div class="card-title activator">
 
-                        <h4>{{book.book_title}} </h4>
+                    <h5>{{book.book_title}} </h5>
 
-                        <h4>{{book.author}}</h4>
+                    <h5>{{book.author}}</h5>
 
-                        <h5>{{book.age_range}}</h5>
-                    
+                    <h6>{{book.age_range}}</h6>
+
                 </div>
 
-                <p><a class="btn" href="/edit_book/{{book._id}}">Edit - Admin only {{book._id}}</a></p>
+                <div>
+                    <div class="col s6 m6 l6"><a class="btn" href="{{url_for('edit_book', book_id=book._id)}}">Edit</a>
+                    </div>
 
-            <!-- 
-                <p><a href="#">Delete - Admin only</a></p>
-            -->
+                </div>
+
             </div>
         </div>
     </div>
