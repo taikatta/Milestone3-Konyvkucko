@@ -3,11 +3,14 @@
 html {
   font-family: 'Nunito Sans', sans-serif;
 }
-/*
-.card .card-image img {
-  width: auto;
-  height: 250px;
-} */
+
+.row .card {
+  padding: 0;
+}
+
+.card-title {
+  font-size: xx-large;
+}
 
 .btn {
     background-color: #4284A4;
