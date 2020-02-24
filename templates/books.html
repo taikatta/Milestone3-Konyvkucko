@@ -10,7 +10,7 @@
 
     <div class="collection">
         <div class="collection-item">
-            <div class="col s12 m6 l4 card">
+            <div class="col s12 m4 l3 card">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator" src="{{ book.book_cover }}">
                 </div>
@@ -21,7 +21,7 @@
                     <p>{{ book.summary }}</p>
                 </div>
             </div>
-            <div class="col s12 m6 l8 card-content">
+            <div class="col s12 m8 l9 card-content">
 
                 <div class="card-title activator">
                     <div class="col s12 m12 l12 edit_delete center-align">
@@ -34,18 +34,12 @@
                         </div>
                     </div>
                     <div class="col s12 m12 l12">
-                        <a href="{{url_for('book_detail', book_id=book._id)}}">
-
-                            <h5>{{book.book_title}}</h5>
-                            <h5>{{book.author}}</h5>
-                        </a>
-
+                        <h5>{{book.book_title}}</h5>
+                        <h5>{{book.author}}</h5>
                         <h6>{{book.age_range}}</h6>
-                        <h6>ISBN: {{book.ISBN}}</h6>
-
                     </div>
-                    <div class="col s12 m12 l12">
-                        <a class="btn" href="#">Review</a>
+                    <div class="col s12 m12 l12 edit_delete">
+                        <a class="btn" href="{{url_for('book_detail', book_id=book._id)}}">Review</a>
 
                     </div>
 
