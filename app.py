@@ -78,6 +78,11 @@ def delete_book(book_id):
     mongo.db.books.remove({'_id': ObjectId(book_id)})
     return redirect(url_for('allbooks'))
 
+@app.route('/donation')
+def donation():
+    return render_template("donation.html", 
+    donation=mongo.db.donation.find())
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
