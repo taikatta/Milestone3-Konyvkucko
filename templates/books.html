@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
 <h3>Books</h3>
+    
+<a class="btn" href="{{url_for('add_book')}}">Add book</a>
+
 <div class="row">
 
     {% for book in books %}
