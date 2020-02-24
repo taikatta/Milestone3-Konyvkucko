@@ -79,7 +79,7 @@ def delete_book(book_id):
     return redirect(url_for('allbooks'))
 
 @app.route('/donation')
-def donation():
+def book_donation():
     return render_template("donation.html", 
     donation=mongo.db.donation.find())
 
@@ -87,6 +87,31 @@ def donation():
 def wishlist():
     return render_template("wishlist.html", 
     wishlist=mongo.db.wishlist.find())
+
+
+@app.route('/donate_book/<book_id>')
+def donate_book(book_id):
+    the_book = mongo.db.wishlist.find_one({"_id": ObjectId(book_id)})
+    return render_template('donatebook.html', book=the_book)
+
+
+@app.route('/update_donation/<book_id>', methods=["POST"])
+def update_donation(book_id):
+    mongo.db.wishlist.remove({'_id': ObjectId(book_id)})
+    donation = mongo.db.donation
+    
+    donation.insert_one(
+    {
+        'author': request.form['author'],
+        'book_title': request.form['book_title'],
+        'ISBN':request.form['ISBN'],
+        'book_cover': request.form['book_cover'],
+        'contact_name':request.form['contact_name'],
+        'contact_info':request.form['contact_info']
+    })
+
+    return redirect(url_for('book_donation'))
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
