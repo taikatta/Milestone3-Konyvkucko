@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, jsonify
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -13,11 +13,6 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/home')
-def helloka():
-    return 'home'
-
-    
 @app.route('/books')
 def allbooks():
     return render_template("books.html", 
@@ -152,6 +147,11 @@ def insert_to_wishlist():
             'ISBN':request.form['ISBN']
         })
     return redirect(url_for('wishlist'))
+
+@app.route('/book_detail/<book_id>')
+def book_detail(book_id):
+    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template('bookdetail.html', book = the_book)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 

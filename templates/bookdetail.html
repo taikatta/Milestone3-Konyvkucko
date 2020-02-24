@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="row">
+
+    <div class="card">
+        <div class="col s12 m6 l6 card-image">
+            <img src="{{ book.book_cover }}">
+        </div>
+        <div class="col s12 m6 l6 card-content">
+            <h4>{{book.author}}</h4>
+            <h4>{{book.book_title}}</h4>
+            <h4>{{book.age_range}}</h4>
+            <h4>ISBN: {{book.ISBN}}</h4>
+        </div>
+
+        <h4 class="col s12 l12">{{book.summary}}</h4>
+
+    </div>
+</div>
+{% endblock %}
