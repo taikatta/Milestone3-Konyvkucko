@@ -4,6 +4,10 @@ html {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+nav {
+  background-color: #4284A4;
+}
+
 .row .card {
   padding: 0;
 }
