@@ -109,9 +109,49 @@ def update_donation(book_id):
         'contact_name':request.form['contact_name'],
         'contact_info':request.form['contact_info']
     })
-
     return redirect(url_for('book_donation'))
 
+
+@app.route('/add_to_books/<book_id>')
+def add_to_books(book_id):
+    the_book = mongo.db.donation.find_one({"_id": ObjectId(book_id)})
+    return render_template('addtobooks.html', book=the_book)
+
+@app.route('/insert_donation/<book_id>', methods=['POST'])
+def insert_donation(book_id):
+    mongo.db.donation.remove({'_id': ObjectId(book_id)})
+    books = mongo.db.books
+        
+    books.insert_one({
+            'book_title': request.form['book_title'],
+            'author': request.form['author'],
+            'age_range':request.form['age_range'],
+            'book_cover': request.form['book_cover'],
+            'summary':request.form['summary'],
+            'ISBN':request.form['ISBN'],
+            'nm_of_copies':request.form['nm_of_copies'],
+            'last_donated':request.form['last_donated']
+        })
+    return redirect(url_for('allbooks'))
+
+
+@app.route('/add_to_wishlist')
+def add_to_wishlist():
+    return render_template('addtowishlist.html', title='Add Book')
+
+
+@app.route('/insert_to_wishlist', methods=['POST'])
+def insert_to_wishlist():
+    
+    wishlist = mongo.db.wishlist
+        
+    wishlist.insert_one({
+            'book_title': request.form['book_title'],
+            'author': request.form['author'],
+            'book_cover': request.form['book_cover'],
+            'ISBN':request.form['ISBN']
+        })
+    return redirect(url_for('wishlist'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
