@@ -83,6 +83,10 @@ def donation():
     return render_template("donation.html", 
     donation=mongo.db.donation.find())
 
+@app.route('/wishlist')
+def wishlist():
+    return render_template("wishlist.html", 
+    wishlist=mongo.db.wishlist.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
