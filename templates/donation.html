@@ -8,16 +8,12 @@
     <div class="collection">
         <div class="collection-item">
             <div class="col s12 m6 l4 card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{ book.book_cover }}">
-                </div>
-                <div class="card-reveal hide-on-med-and-down">
-                    <span class="card-title grey-text text-darken-4">{{book.book_title}}<i
-                            class="material-icons right">close</i></span>
+                <div class="card-image">
+                    <img src="{{ book.book_cover }}">
                 </div>
             </div>
             <div class="col s12 m6 l8 card-content">
-                <div class="card-title activator">
+                <div class="card-title">
                     <h5>{{book.book_title}} </h5>
                     <h5>{{book.author}}</h5>
                 </div>
