@@ -66,6 +66,7 @@ nav {
   display: none;
 }
 
+/* Datepicker display changed */
 .picker__date-display {
   background-color: #4284A4;
 }
