@@ -19,14 +19,16 @@
 
         <nav>
             <div class="nav-wrapper">
-                <a class="brand-logo" href="{{ url_for('allbooks') }}">&nbsp; Könyvkuckó</a>
+                <a class="brand-logo" href="{{ url_for('home') }}">&nbsp; Könyvkuckó</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('allbooks')}}">Books</a></li>
                     <li><a href="{{url_for('book_donation')}}">Donation</a></li>
                     <li><a href="{{url_for('wishlist')}}">Wishlist</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
+                    <li><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('allbooks')}}">Books</a></li>
                     <li><a href="{{url_for('book_donation')}}">Donation</a></li>
                     <li><a href="{{url_for('wishlist')}}">Wishlist</a></li>

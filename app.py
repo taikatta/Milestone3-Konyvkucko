@@ -13,6 +13,9 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u
 mongo = PyMongo(app)
 
 @app.route('/')
+def home():
+    return render_template('home.html')
+
 @app.route('/books')
 def allbooks():
     return render_template("books.html", 
