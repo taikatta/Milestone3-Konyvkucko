@@ -3,7 +3,7 @@
 <h5>Please click to the button to donate to our library.</h5>
 
 <a class="btn" href="{{url_for('add_to_donation')}}">I would like to donate a book!<i
-    class="material-icons right">add</i></a>
+        class="material-icons right">add</i></a>
 
 <h4>Recently donated books:</h4>
 
@@ -21,7 +21,9 @@
                 <div class="card-title">
                     <h5>{{book.book_title}} </h5>
                     <h5>{{book.author}}</h5>
-                    <a class="btn" href="{{url_for('add_to_books', book_id=book._id)}}">The book has arrived!</a>
+                    <div class="button_padding">
+                        <a class="btn" href="{{url_for('add_to_books', book_id=book._id)}}">The book has arrived!</a>
+                    </div>
                 </div>
             </div>
         </div>

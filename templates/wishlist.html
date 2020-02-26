@@ -2,8 +2,7 @@
 
 <h3>Wishlist</h3>
 
-<a class="btn" href="{{url_for('add_to_wishlist')}}">Add book to wishlist<i
-    class="material-icons right">add</i></a>
+<a class="btn" href="{{url_for('add_to_wishlist')}}">Add book to wishlist<i class="material-icons right">add</i></a>
 
 <div class="row">
 
@@ -19,7 +18,10 @@
                 <div class="card-title">
                     <h5>{{book.book_title}} </h5>
                     <h5>{{book.author}}</h5>
-                    <a class="btn" href="{{url_for('donate_book', book_id=book._id)}}">I want to donate this book!</a>
+                    <div class="button_padding">
+                        <a class="btn" href="{{url_for('donate_book', book_id=book._id)}}">I want to donate this
+                            book!</a>
+                    </div>
                 </div>
             </div>
         </div>
