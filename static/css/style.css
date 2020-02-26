@@ -65,3 +65,22 @@ nav {
 .hidden {
   display: none;
 }
+
+.picker__date-display {
+  background-color: #4284A4;
+}
+
+
+.picker__day.picker__day--today,
+.picker__close, .picker__today {
+  color: #4284A4;
+}
+
+.picker__nav--next:hover,
+.picker__nav--prev:hover,
+.picker__day--selected, 
+.picker__day--selected:hover, 
+.picker--focused, 
+.picker__day--selected  {
+  background-color: #60a0bf !important;
+}
