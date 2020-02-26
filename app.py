@@ -148,6 +148,25 @@ def insert_to_wishlist():
         })
     return redirect(url_for('wishlist'))
 
+@app.route('/add_to_donation')
+def add_to_donation():
+    return render_template('addtodonation.html', title='Add Book')
+
+@app.route('/insert_to_donation', methods=['POST'])
+def insert_to_donation():
+    
+    donation = mongo.db.donation
+        
+    donation.insert_one({
+            'book_title': request.form['book_title'],
+            'author': request.form['author'],
+            'book_cover': request.form['book_cover'],
+            'ISBN':request.form['ISBN'],
+            'contact_name':request.form['contact_name'],
+            'contact_info':request.form['contact_info']
+        })
+    return redirect(url_for('book_donation'))  
+
 @app.route('/book_detail/<book_id>')
 def book_detail(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})

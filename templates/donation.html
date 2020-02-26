@@ -1,6 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Donation list</h3>
+<h5>Please click to the button to donate to our library.</h5>
+
+<a class="btn" href="{{url_for('add_to_donation')}}">I would like to donate a book!<i
+    class="material-icons right">add</i></a>
+
+<h4>Recently donated books:</h4>
 
 <div class="row">
 
