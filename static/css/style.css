@@ -16,6 +16,10 @@ nav {
   background-color: #4284A4;
 }
 
+.footer-copyright div {
+  text-align: center;
+}
+
 .go_back_button {
   background-color: #4284A4;
   color: #fff;
