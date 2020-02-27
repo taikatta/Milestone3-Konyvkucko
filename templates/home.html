@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="col s12 m6 l6 welcome">
+
+    <h4>Welcome to our Hungarian children's books library!</h4>
+    <h5>If you would like to see our book collection, visit: <a href="{{url_for('allbooks')}}">Books</a></h5>
+    <h5>Check out our <a href="{{url_for('wishlist')}}">Wishlist</a> to see which books are we looking for at the
+        moment.</h5>
+    <h5>These books has been donated to our library, we will make them available to you as soon as possible: <a
+            href="{{url_for('book_donation')}}">Donation</a>
+    </h5>
+    <h5>To borrow our books all you need is a public library card. You can check the available Hungarian books
+        here: <a
+            href="http://librariesireland.iii.com/iii/encore/search/C__SJ894.511__Orightresult__U?lang=eng&suite=def"
+            target="_blank">http://librariesireland.iii.com/</a>
+    </h5>
+
+</div>
+
+
+{% endblock %}
