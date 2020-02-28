@@ -6,8 +6,13 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 
 
-app.config["MONGO_DBNAME"] = 'konyvkucko'
-app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+
+
+# Secret Key value generated via secrets python module.
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+
 
 
 mongo = PyMongo(app)
