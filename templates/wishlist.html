@@ -5,7 +5,9 @@
     books:</h5>
 
 <div class="s16 m6 l6 button_padding">
-    <a class="btn" href="{{url_for('add_to_donation')}}">I would like to donate a different book!<i
+    <a class="btn hide-on-small-only" href="{{url_for('add_to_donation')}}">I would like to donate a different book!<i
+            class="material-icons right">add</i></a>
+    <a class="btn hide-on-med-and-up" href="{{url_for('add_to_donation')}}">Donate a different book<i
             class="material-icons right">add</i></a>
 </div>
 <div class="s16 m6 l6 button_padding">
@@ -27,7 +29,9 @@
                     <h5>{{book.book_title}} </h5>
                     <h5>{{book.author}}</h5>
                     <div class="button_padding">
-                        <a class="btn" href="{{url_for('donate_book', book_id=book._id)}}">I want to donate this
+                        <a class="btn hide-on-med-and-down" href="{{url_for('donate_book', book_id=book._id)}}">I would like to donate this
+                            book!</a>
+                        <a class="btn hide-on-large-only" href="{{url_for('donate_book', book_id=book._id)}}">Donate this
                             book!</a>
                     </div>
                 </div>
