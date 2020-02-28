@@ -4,19 +4,20 @@ from flask import Flask, render_template, redirect, request, url_for, jsonify
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
+"""
 if path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+
+
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 """
-
-# Secret Key value generated via secrets python module.
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
-
-"""
+app = Flask(__name__)
+app.config["MONGO_DBNAME"] = 'konyvkucko'
+app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
