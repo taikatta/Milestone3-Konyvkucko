@@ -1,9 +1,13 @@
 import os
 from os import path
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, session
+from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from forms import RegistrationForm, LoginForm
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import bcrypt
+
 
 
 """
@@ -23,6 +27,7 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u
 app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
 
 mongo = PyMongo(app)
+
 
 @app.route('/')
 def home():
@@ -192,25 +197,63 @@ def book_detail(book_id):
 def response_404(exception):
     return render_template('404.html', exception=exception)
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('home'))
-    return render_template('register.html', title='Register', form=form)
-
+@app.route('/userlogin', methods=['GET', 'POST'])
+def userlogin():
+    return render_template("login.html", title='Login')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        if form.email.data == 'taikatta@gmail.com' and form.password.data == 'CodeInstitute':
-            flash('You have been logged in!', 'success')
+    username = request.form['username']
+    login_user = mongo.db.users.find_one({'username' : username})
+    
+    if login_user:
+        if bcrypt.checkpw(request.form['password'].encode('utf-8'), 
+                        login_user['password']):
+            session['username'] = request.form.to_dict()['username']
+            """ user_id = login_user['username'] """
+            flash('You are successfully logged in')
             return redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
-    return render_template('login.html', title='Login', form=form)
+            flash('Invalid username/password combination!')
+            return render_template('register.html', genres=mongo.db.genres.find())
+    else:
+        flash('Invalid username/password combination!')
+        
+    return render_template('register.html', genres=mongo.db.genres.find())
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    """Register user."""
+    
+    if request.method == 'POST':
+        existing_user = mongo.db.users.find_one({'username' : request.form['username']})
+        password = request.form['password']
+        username = request.form['username']
+        
+        if password == '' or username == '':
+            error = 'Please enter a username and password'
+            return render_template("home.html", title='Home', error=error)
+                                    
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            
+            mongo.db.users.insert_one({
+                'username' : request.form['username'], 
+                'password' : hashpass
+            })
+            session['username'] = request.form['username']
+            return redirect(url_for('home'))
+        else:
+            flash('This username already exists!')
+
+    return render_template('register.html', genres=mongo.db.genres.find())
+
+@app.route('/end_session')
+def end_session():
+    """End session."""
+    
+    session.clear()
+    return render_template("home.html", title='Home')
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 

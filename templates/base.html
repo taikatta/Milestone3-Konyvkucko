@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Favicon added https://www.favicon-generator.org -->
     <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}" type="image/x-icon">
-    
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
@@ -26,12 +26,14 @@
                     <li><a href="{{url_for('allbooks')}}">Books</a></li>
                     <li><a href="{{url_for('book_donation')}}">Donation</a></li>
                     <li><a href="{{url_for('wishlist')}}">Wishlist</a></li>
+                    <li><a href="{{url_for('userlogin')}}">Login</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="{{url_for('home')}}">Home</a></li>
                     <li><a href="{{url_for('allbooks')}}">Books</a></li>
                     <li><a href="{{url_for('book_donation')}}">Donation</a></li>
                     <li><a href="{{url_for('wishlist')}}">Wishlist</a></li>
+                    <li><a href="{{url_for('userlogin')}}">Login</a></li>
                 </ul>
             </div>
         </nav>
@@ -50,17 +52,24 @@
                 <div class="col l6 s12">
                     <h5 class="white-text">Libraries Ireland</h5>
                     <p>Login to your Library Account and search for Hungarian children's books here:</p>
-                    <a href="http://librariesireland.iii.com/iii/encore/search/C__SJ894.511__Orightresult__U?lang=eng&suite=def" target="_blank"><p class="grey-text text-lighten-4">http://librariesireland.iii.com/</p></a>
-                    
+                    <a href="http://librariesireland.iii.com/iii/encore/search/C__SJ894.511__Orightresult__U?lang=eng&suite=def"
+                        target="_blank">
+                        <p class="grey-text text-lighten-4">http://librariesireland.iii.com/</p>
+                    </a>
+
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Contact details:</h5>
                     <p class="grey-text text-lighten-3">Email: dublinikonyvkucko@gmail.com</p>
                     <p class="grey-text text-lighten-3">Our books are hosted by:</p>
-                    <p class="grey-text text-lighten-3" href="#!">Deansgrange Library<br>Clonkeen Dr<br>Deansgrange<br>Dublin<br>D18 NY58</p>
+                    <p class="grey-text text-lighten-3" href="#!">Deansgrange Library<br>Clonkeen
+                        Dr<br>Deansgrange<br>Dublin<br>D18 NY58</p>
                 </div>
             </div>
         </div>
+        {% if not session %}
+        <p> Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>. </p>
+        {% endif %}
         <div class="footer-copyright">
             <div class="container">
                 Copyright © 2020 Könyvkuckó

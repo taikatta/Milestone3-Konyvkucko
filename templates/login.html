@@ -3,27 +3,23 @@
 
 <div class="container">
     <div class="row">
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
-
-            <h3>Login</h3>
-            <div class="row">
-                <div class="input-field col s12">
-                    {{ form.email.label }}
-                    {{ form.email }}
+        <form class='login-row form' action="{{ url_for('login') }}" method="POST">
+            <div class="col-sm-12 col-md-5 col-lg-4">
+                <p> USERNAME </p>
+                <input type="text" name="username" />
+            </div>
+            <div class="col-sm-12 col-md-5 col-lg-4">
+                <p> PASSWORD </p>
+                <input type="password" name="password" />
+            </div>
+            <div class="col-sm-12 col-md-5 col-lg-2">
+                <div class="row">
+                    <button type='submit' class="btn waves-effect waves-light"> Login </button>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    {{ form.password.label }}
-                    {{ form.password }}
-                </div>
-            </div>
-            <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                    {{ form.submit}}
-                </button>
-            </div>
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <p id='flashed_book'>{{ message }}</p>
+            {% endfor %} {% endif %} {% endwith %}
         </form>
     </div>
     <div class="row">
