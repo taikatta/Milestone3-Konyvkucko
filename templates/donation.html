@@ -25,10 +25,12 @@
                     <div class="card-title">
                         <h5>{{book.book_title}} </h5>
                         <h5>{{book.author}}</h5>
+                        {% if 'username' in session %}
                         <div class="button_padding">
                             <a class="btn" href="{{url_for('add_to_books', book_id=book._id)}}">The book has
                                 arrived!</a>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
