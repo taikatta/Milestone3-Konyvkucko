@@ -218,7 +218,7 @@ def login():
             session['username'] = request.form.to_dict()['username']
             user_id = login_user['username']
             flash('You are successfully logged in')
-            return redirect(url_for('home'), user_id=user_id)
+            return redirect(url_for('home'))
         else:
             flash('Invalid username/password combination!')
             return render_template('register.html', genres=mongo.db.genres.find())
@@ -254,10 +254,10 @@ def register():
 
     return render_template('register.html', genres=mongo.db.genres.find())
 
-@app.route('/end_session')
-def end_session():
+
+@app.route('/endsession')
+def endsession():
     """End session."""
-    
     session.clear()
     return render_template("home.html", title='Home')
 
