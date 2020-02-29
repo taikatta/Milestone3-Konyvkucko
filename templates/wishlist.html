@@ -12,7 +12,9 @@
         <a class="btn hide-on-med-and-up" href="{{url_for('add_to_donation')}}">Donate a different book<i
                 class="material-icons right">add</i></a>
     </div>
-    {% if 'username' in session %}
+    {% if 'username' in session and session['username'] == 'admin' %}
+
+
     <div class="s16 m6 l6 button_padding">
         <a class="btn" href="{{url_for('add_to_wishlist')}}">Add book to wishlist<i
                 class="material-icons right">add</i></a>

@@ -25,7 +25,7 @@
                     <div class="card-title">
                         <h5>{{book.book_title}} </h5>
                         <h5>{{book.author}}</h5>
-                        {% if 'username' in session %}
+                        {% if 'username' in session and session['username'] == 'admin' %}
                         <div class="button_padding">
                             <a class="btn" href="{{url_for('add_to_books', book_id=book._id)}}">The book has
                                 arrived!</a>
