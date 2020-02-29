@@ -1,8 +1,10 @@
 import os
 from os import path
-from flask import Flask, render_template, redirect, request, url_for, jsonify
+from flask import Flask, render_template, redirect, request, url_for, flash
+from forms import RegistrationForm, LoginForm
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+
 
 """
 if path.exists("env.py"):
@@ -18,6 +20,7 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'konyvkucko'
 app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
+app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
 
 mongo = PyMongo(app)
 
@@ -188,6 +191,26 @@ def book_detail(book_id):
 @app.errorhandler(404)
 def response_404(exception):
     return render_template('404.html', exception=exception)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'taikatta@gmail.com' and form.password.data == 'CodeInstitute':
+            flash('You have been logged in!', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+    return render_template('login.html', title='Login', form=form)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
