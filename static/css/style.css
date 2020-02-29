@@ -8,6 +8,10 @@ html {
   height: 350px;
 }
 
+.wrong {
+  background-color: #4284A4;
+}
+
 /* Container holding the image and the text */
 .container {
   position: relative;
