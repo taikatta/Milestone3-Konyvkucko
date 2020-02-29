@@ -12,6 +12,10 @@ html {
   background-color: #4284A4;
 }
 
+.login-join {
+  margin: 20px !important;
+}
+
 /* Container holding the image and the text */
 .container {
   position: relative;
