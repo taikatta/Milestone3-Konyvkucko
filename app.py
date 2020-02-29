@@ -2,28 +2,26 @@ import os
 from os import path
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
-from forms import RegistrationForm, LoginForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
+import sys
 
 
 
-"""
-if path.exists("env.py"):
+if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+try:
+    app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME", default=env.MONGO_DBNAME)
+    app.config["MONGO_URI"] = os.environ.get('MONGO_URI', default=env.MONGO_URI)
+    print("MONGO_URI", app.config['MONGO_URI'])
+except Exception:
+    print("l")
+    sys.exit(1)
 
-
-app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
-
-"""
-app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'konyvkucko'
-app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
 app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
 
 mongo = PyMongo(app)
@@ -210,7 +208,7 @@ def login():
         if bcrypt.checkpw(request.form['password'].encode('utf-8'), 
                         login_user['password']):
             session['username'] = request.form.to_dict()['username']
-            """ user_id = login_user['username'] """
+            user_id = login_user['username']
             flash('You are successfully logged in')
             return redirect(url_for('home'))
         else:
