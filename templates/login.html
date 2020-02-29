@@ -2,14 +2,15 @@
 {% block content %}
 
 <div class="container">
+    <h3>Sign in</h3>
     <div class="row">
         <form class='login-row form' action="{{ url_for('login') }}" method="POST">
-            <div class="col-sm-12 col-md-5 col-lg-4">
-                <p> USERNAME </p>
+            <div class="row">
+                <label for="username">Username : </label>
                 <input type="text" name="username" />
             </div>
-            <div class="col-sm-12 col-md-5 col-lg-4">
-                <p> PASSWORD </p>
+            <div class="row">
+                <label for="password">Password : </label>
                 <input type="password" name="password" />
             </div>
             <div class="col-sm-12 col-md-5 col-lg-2">
