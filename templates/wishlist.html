@@ -1,44 +1,49 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Wishlist</h3>
-<h5>Would you consider donating Hungarian children's books to our library to help us? We are currently looking for these
-    books:</h5>
+<div class="container">
+    <h3>Wishlist</h3>
+    <h5>Would you consider donating Hungarian children's books to our library to help us? We are currently looking for
+        these
+        books:</h5>
 
-<div class="s16 m6 l6 button_padding">
-    <a class="btn hide-on-small-only" href="{{url_for('add_to_donation')}}">I would like to donate a different book!<i
-            class="material-icons right">add</i></a>
-    <a class="btn hide-on-med-and-up" href="{{url_for('add_to_donation')}}">Donate a different book<i
-            class="material-icons right">add</i></a>
-</div>
-<div class="s16 m6 l6 button_padding">
-    <a class="btn" href="{{url_for('add_to_wishlist')}}">Add book to wishlist<i class="material-icons right">add</i></a>
-</div>
+    <div class="s16 m6 l6 button_padding">
+        <a class="btn hide-on-small-only" href="{{url_for('add_to_donation')}}">I would like to donate a different
+            book!<i class="material-icons right">add</i></a>
+        <a class="btn hide-on-med-and-up" href="{{url_for('add_to_donation')}}">Donate a different book<i
+                class="material-icons right">add</i></a>
+    </div>
+    <div class="s16 m6 l6 button_padding">
+        <a class="btn" href="{{url_for('add_to_wishlist')}}">Add book to wishlist<i
+                class="material-icons right">add</i></a>
+    </div>
 
-<div class="row">
+    <div class="row">
 
-    {% for book in wishlist %}
-    <div class="collection">
-        <div class="collection-item">
-            <div class="col s12 m6 l4 card">
-                <div class="card-image">
-                    <img src="{{ book.book_cover }}">
+        {% for book in wishlist %}
+        <div class="collection">
+            <div class="collection-item">
+                <div class="col s12 m6 l4 card">
+                    <div class="card-image">
+                        <img src="{{ book.book_cover }}">
+                    </div>
                 </div>
-            </div>
-            <div class="col s12 m6 l8 card-content">
-                <div class="card-title">
-                    <h5>{{book.book_title}} </h5>
-                    <h5>{{book.author}}</h5>
-                    <div class="button_padding">
-                        <a class="btn hide-on-med-and-down" href="{{url_for('donate_book', book_id=book._id)}}">I would like to donate this
-                            book!</a>
-                        <a class="btn hide-on-large-only" href="{{url_for('donate_book', book_id=book._id)}}">Donate this
-                            book!</a>
+                <div class="col s12 m6 l8 card-content">
+                    <div class="card-title">
+                        <h5>{{book.book_title}} </h5>
+                        <h5>{{book.author}}</h5>
+                        <div class="button_padding">
+                            <a class="btn hide-on-med-and-down" href="{{url_for('donate_book', book_id=book._id)}}">I
+                                would like to donate this
+                                book!</a>
+                            <a class="btn hide-on-large-only" href="{{url_for('donate_book', book_id=book._id)}}">Donate
+                                this
+                                book!</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
-
 {% endblock %}

@@ -1,25 +1,26 @@
 {% extends 'base.html' %} {% block content %}
 
-
-<div class="row">
-    <div class="collection">
-        <div class="collection-item">
-            <div class="card">
-                <div class="col s10 m4 l3 card-image">
-                    <img src="{{ book.book_cover }}">
-                </div>
-                <div class="col s12 m8 l9 card-content">
-                    <!-- Go Back button from: https://www.computerhope.com/issues/ch000317.htm -->
-                    <div class="btn">
-                        <a class="go_back_button" type="button" value="Go back!" onclick="history.back()">Go Back!<i
-                                class="material-icons right">arrow_back</i></a>
+<div class="container">
+    <div class="row">
+        <div class="collection">
+            <div class="collection-item">
+                <div class="card">
+                    <div class="col s10 m4 l3 card-image">
+                        <img src="{{ book.book_cover }}">
                     </div>
-                    <h5>{{book.author}}</h5>
-                    <h5>{{book.book_title}}</h5>
-                    <h5>{{book.age_range}}</h5>
-                    <h5>ISBN: {{book.ISBN}}</h5>
+                    <div class="col s12 m8 l9 card-content">
+                        <!-- Go Back button from: https://www.computerhope.com/issues/ch000317.htm -->
+                        <div class="btn">
+                            <a class="go_back_button" type="button" value="Go back!" onclick="history.back()">Go Back!<i
+                                    class="material-icons right">arrow_back</i></a>
+                        </div>
+                        <h5>{{book.author}}</h5>
+                        <h5>{{book.book_title}}</h5>
+                        <h5>{{book.age_range}}</h5>
+                        <h5>ISBN: {{book.ISBN}}</h5>
+                    </div>
+                    <h5 class="col s12 l12">{{book.summary}}</h5>
                 </div>
-                <h5 class="col s12 l12">{{book.summary}}</h5>
             </div>
         </div>
     </div>

@@ -1,36 +1,39 @@
 {% extends 'base.html' %} {% block content %}
 
-<h5>Please click to the button to donate to our library.</h5>
+<div class="container">
+    <h5>Please click to the button to donate to our library.</h5>
 
-<a class="btn" href="{{url_for('add_to_donation')}}">I would like to donate a book!<i
-        class="material-icons right">add</i></a>
+    <a class="btn" href="{{url_for('add_to_donation')}}">I would like to donate a book!<i
+            class="material-icons right">add</i></a>
 
-<h4>Recently donated books:</h4>
-<h5>A special thank you for your donation to Konyvkucko. We appreciate your kindness.</h5>
-<h6>The following books have been donated to our library, but they haven't arrived yet. Once we have the books, they will appear on the <a href="{{url_for('allbooks')}}">Books</a> page.</h6>
+    <h4>Recently donated books:</h4>
+    <h5>A special thank you for your donation to Konyvkucko. We appreciate your kindness.</h5>
+    <h6>The following books have been donated to our library, but they haven't arrived yet. Once we have the books, they
+        will appear on the <a href="{{url_for('allbooks')}}">Books</a> page.</h6>
 
-<div class="row">
+    <div class="row">
 
-    {% for book in donation %}
-    <div class="collection">
-        <div class="collection-item">
-            <div class="col s12 m6 l4 card">
-                <div class="card-image">
-                    <img src="{{ book.book_cover }}">
+        {% for book in donation %}
+        <div class="collection">
+            <div class="collection-item">
+                <div class="col s12 m6 l4 card">
+                    <div class="card-image">
+                        <img src="{{ book.book_cover }}">
+                    </div>
                 </div>
-            </div>
-            <div class="col s12 m6 l8 card-content">
-                <div class="card-title">
-                    <h5>{{book.book_title}} </h5>
-                    <h5>{{book.author}}</h5>
-                    <div class="button_padding">
-                        <a class="btn" href="{{url_for('add_to_books', book_id=book._id)}}">The book has arrived!</a>
+                <div class="col s12 m6 l8 card-content">
+                    <div class="card-title">
+                        <h5>{{book.book_title}} </h5>
+                        <h5>{{book.author}}</h5>
+                        <div class="button_padding">
+                            <a class="btn" href="{{url_for('add_to_books', book_id=book._id)}}">The book has
+                                arrived!</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
-
 {% endblock %}
