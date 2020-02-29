@@ -6,9 +6,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
+
+
+
+"""
 import sys
-
-
 
 if os.path.exists("env.py"):
     import env
@@ -22,6 +24,12 @@ except Exception:
     print("l")
     sys.exit(1)
 
+app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
+
+"""
+app = Flask(__name__)
+app.config["MONGO_DBNAME"] = 'konyvkucko'
+app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
 app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
 
 mongo = PyMongo(app)
@@ -210,7 +218,7 @@ def login():
             session['username'] = request.form.to_dict()['username']
             user_id = login_user['username']
             flash('You are successfully logged in')
-            return redirect(url_for('home'))
+            return redirect(url_for('home'), user_id=user_id)
         else:
             flash('Invalid username/password combination!')
             return render_template('register.html', genres=mongo.db.genres.find())
