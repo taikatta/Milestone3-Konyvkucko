@@ -188,6 +188,7 @@ def insert_to_donation():
             'author': request.form['author'],
             'book_cover': request.form['book_cover'],
             'ISBN':request.form['ISBN'],
+            'approved':'N',
             'contact_name':request.form['contact_name'],
             'contact_info':request.form['contact_info']
         })
