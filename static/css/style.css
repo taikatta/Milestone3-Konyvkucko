@@ -2,7 +2,6 @@
 
 html {
   font-family: 'Nunito Sans', sans-serif;
-  background-color: #628ea3;
 }
 
 /* Container holding the image and the text */
@@ -24,10 +23,15 @@ img {
   color: white;
   padding-left: 20px;
   padding-right: 20px;
-  top: 50%;
+  top: 25%;
   left:50%;
   transform: translate(-50%,-50%);
 } 
+
+.text {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 .button_padding {
   padding-top: 10px !important;
