@@ -144,7 +144,7 @@ def insert_donation(book_id):
 
 @app.route('/add_to_wishlist')
 def add_to_wishlist():
-    return render_template('addtowishlist.html', title='Add Book')
+    return render_template('addtowishlist.html', title='Add Book to Wishlist')
 
 
 @app.route('/insert_to_wishlist', methods=['POST'])
@@ -162,7 +162,7 @@ def insert_to_wishlist():
 
 @app.route('/add_to_donation')
 def add_to_donation():
-    return render_template('addtodonation.html', title='Add Book')
+    return render_template('addtodonation.html', title='Add Book to Donation')
 
 @app.route('/insert_to_donation', methods=['POST'])
 def insert_to_donation():
@@ -183,6 +183,11 @@ def insert_to_donation():
 def book_detail(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template('bookdetail.html', book = the_book)
+
+# Error Handling of 404
+@app.errorhandler(404)
+def response_404(exception):
+    return render_template('404.html', exception=exception)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 

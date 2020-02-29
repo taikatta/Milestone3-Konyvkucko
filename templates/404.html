@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section>
+    <div>
+        <img src="../static/images/Canva - Pile of Books in a Library.jpg">
+        <div class="text-block">
+            <div>
+                
+                <h5>Oops! Something is broken.</h5>
+  
+                <p class="hide-on-small-only">We can’t find the page you were looking for.</p>
+                <p>Did you want to <a class="link_color" href="{{url_for('book_donation')}}">donate</a> book?</p>
+                <p class="hide-on-small-only">Or search our <a class="link_color" href="{{url_for('allbooks')}}">collection</a>?</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
