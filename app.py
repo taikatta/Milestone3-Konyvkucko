@@ -1,7 +1,6 @@
 import os
 from os import path
 from flask import Flask, render_template, redirect, request, url_for, flash, session
-from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
