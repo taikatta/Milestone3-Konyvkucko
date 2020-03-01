@@ -61,6 +61,7 @@ On fonts.google.com in the about section the description of the font is the foll
 * [Font Awesome](https://fontawesome.com/) 
 * [Google Fonts](https://fonts.google.com/) 
 * [moquaps](https://moqups.com)
+* [compressjpeg](https://compressjpeg.com/)
 
 ## Testing
 
