@@ -236,7 +236,6 @@ def register():
         else:
             flash('Sorry! This username already exists! Did you want to sign in?')
             return render_template('login.html')
-            
     return render_template('register.html')
 
 
