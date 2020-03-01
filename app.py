@@ -28,17 +28,13 @@ def allbooks():
     return render_template("books.html", 
     books=mongo.db.books.find())
 
-
 @app.route('/add_book')
 def add_book():
     return render_template('addbook.html', title='Add Book')
 
-
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
-    
     books = mongo.db.books
-        
     books.insert_one({
             'book_title': request.form['book_title'],
             'author': request.form['author'],
@@ -48,21 +44,17 @@ def insert_book():
             'ISBN':request.form['ISBN'],
             'nm_of_copies':request.form['nm_of_copies'],
             'last_donated':request.form['last_donated']
-        
         })
     return redirect(url_for('allbooks'))
-
 
 @app.route('/edit_book/<book_id>')
 def edit_book(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template('editbook.html', book=the_book)
 
-
 @app.route('/update_book/<book_id>', methods=["POST"])
 def update_book(book_id):
     books = mongo.db.books
-
     books.update( {'_id' : ObjectId(book_id)},
     {
         'book_title': request.form.get('book_title'),
@@ -73,9 +65,7 @@ def update_book(book_id):
         'ISBN':request.form.get('ISBN'),
         'nm_of_copies':request.form.get('nm_of_copies'),
         'last_donated':request.form.get('last_donated')
-
     })
-
     return redirect(url_for('allbooks'))
 
 @app.route('/delete_book/<book_id>')
@@ -93,18 +83,15 @@ def wishlist():
     return render_template("wishlist.html", 
     wishlist=mongo.db.wishlist.find())
 
-
 @app.route('/donate_book/<book_id>')
 def donate_book(book_id):
     the_book = mongo.db.wishlist.find_one({"_id": ObjectId(book_id)})
     return render_template('donatebook.html', book=the_book)
 
-
 @app.route('/update_donation/<book_id>', methods=["POST"])
 def update_donation(book_id):
     mongo.db.wishlist.remove({'_id': ObjectId(book_id)})
     donation = mongo.db.donation
-    
     donation.insert_one(
     {
         'author': request.form['author'],
@@ -115,8 +102,7 @@ def update_donation(book_id):
         'contact_name':request.form['contact_name'],
         'contact_info':request.form['contact_info']
     })
-    return redirect(url_for('book_donation'))
-
+    return redirect(url_for('thanks'))
 
 @app.route('/add_to_books/<book_id>')
 def add_to_books(book_id):
@@ -127,7 +113,6 @@ def add_to_books(book_id):
 def insert_donation(book_id):
     mongo.db.donation.remove({'_id': ObjectId(book_id)})
     books = mongo.db.books
-        
     books.insert_one({
             'book_title': request.form['book_title'],
             'author': request.form['author'],
@@ -140,17 +125,13 @@ def insert_donation(book_id):
         })
     return redirect(url_for('allbooks'))
 
-
 @app.route('/add_to_wishlist')
 def add_to_wishlist():
     return render_template('addtowishlist.html', title='Add Book to Wishlist')
 
-
 @app.route('/insert_to_wishlist', methods=['POST'])
 def insert_to_wishlist():
-    
     wishlist = mongo.db.wishlist
-        
     wishlist.insert_one({
             'book_title': request.form['book_title'],
             'author': request.form['author'],
@@ -163,11 +144,13 @@ def insert_to_wishlist():
 def add_to_donation():
     return render_template('addtodonation.html', title='Add Book to Donation')
 
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html', title='Thank you')
+
 @app.route('/insert_to_donation', methods=['POST'])
 def insert_to_donation():
-    
     donation = mongo.db.donation
-        
     donation.insert_one({
             'book_title': request.form['book_title'],
             'author': request.form['author'],
@@ -179,10 +162,6 @@ def insert_to_donation():
         })
     return redirect(url_for('thanks'))  
 
-@app.route('/thanks')
-def thanks():
-    return render_template('thanks.html', title='Thank you')
-
 @app.route('/approved/<book_id>')
 def approved(book_id):
     donation = mongo.db.donation
@@ -191,7 +170,6 @@ def approved(book_id):
         'approved':True }
     })
     return redirect(url_for('book_donation'))
-
 
 @app.route('/book_detail/<book_id>')
 def book_detail(book_id):
@@ -211,7 +189,6 @@ def userlogin():
 def login():
     username = request.form['username']
     login_user = mongo.db.users.find_one({'username' : username})
-    
     if login_user:
         if bcrypt.checkpw(request.form['password'].encode('utf-8'), 
                         login_user['password']):
@@ -224,18 +201,15 @@ def login():
             return render_template('register.html', genres=mongo.db.genres.find())
     else:
         flash('Invalid username/password combination!')
-        
     return render_template('register.html', genres=mongo.db.genres.find())
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     """Register user."""
-    
     if request.method == 'POST':
         existing_user = mongo.db.users.find_one({'username' : request.form['username']})
         password = request.form['password']
         username = request.form['username']
-        
         if password == '' or username == '':
             error = 'Please enter a username and password'
             return render_template("home.html", title='Home', error=error)
