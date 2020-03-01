@@ -1,9 +1,13 @@
 import os
 from os import path
 from flask import Flask, render_template, redirect, request, url_for, flash, session
+from flask_login import LoginManager, current_user, login_user, logout_user, login_required
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
+
+
 import sys
 
 if os.path.exists("env.py"):
@@ -13,9 +17,12 @@ app = Flask(__name__)
 try:
     app.config["MONGO_DBNAME"] = os.getenv('MONGO_DBNAME')
     app.config["MONGO_URI"] = os.getenv('MONGO_URI')
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    print("MONGO_URI", app.config['MONGO_URI'])
 except Exception:
+    print("l")
     sys.exit(1)
+
+app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
 
 mongo = PyMongo(app)
 
