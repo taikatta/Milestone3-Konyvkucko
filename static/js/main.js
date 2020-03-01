@@ -12,11 +12,18 @@ $('.datepicker').pickadate({
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
 });
-document.getElementById("matfix").addEventListener("click", function (e) {
-    e.stopPropagation();
-});
 
-<!-- I am using Materialize for card reveal, but wanted to change it to reveal the summary by hover. I got the solution from stack overflow: https://bit.ly/39S4X6f -->
+function datePickerSetUp()  {
+    var datePickerContainer = document.getElementById("matfix");
+    if (datePickerContainer != null){
+        datePickerContainer.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+    }    
+}
+/*
+I am using Materialize for card reveal, but wanted to change it to reveal the summary by hover.I got the solution from stack overflow: https://bit.ly/39S4X6f -->
+*/ 
 $(function () {
     $('.card').hover(
         function () {
@@ -26,3 +33,5 @@ $(function () {
         }
     );
 });
+
+datePickerSetUp();

@@ -9,7 +9,7 @@ import bcrypt
 
 
 
-"""
+
 import sys
 
 if os.path.exists("env.py"):
@@ -17,8 +17,8 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 try:
-    app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME", default=env.MONGO_DBNAME)
-    app.config["MONGO_URI"] = os.environ.get('MONGO_URI', default=env.MONGO_URI)
+    app.config["MONGO_DBNAME"] = os.getenv('MONGO_DBNAME')
+    app.config["MONGO_URI"] = os.getenv('MONGO_URI')
     print("MONGO_URI", app.config['MONGO_URI'])
 except Exception:
     print("l")
@@ -31,7 +31,7 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'konyvkucko'
 app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
 app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
-
+"""
 mongo = PyMongo(app)
 
 
