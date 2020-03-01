@@ -6,8 +6,6 @@ from bson.objectid import ObjectId
 import bcrypt
 import sys
 
-
-
 if os.path.exists("env.py"):
     import env
 
@@ -19,16 +17,7 @@ try:
 except Exception:
     sys.exit(1)
 
-"""
-app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'konyvkucko'
-app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng05OT@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
-app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
-"""
-
-
 mongo = PyMongo(app)
-
 
 @app.route('/')
 def home():
