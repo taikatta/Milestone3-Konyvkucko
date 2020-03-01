@@ -209,16 +209,14 @@ def login():
     login_user = mongo.db.users.find_one({'username': username})
     if login_user:
         if bcrypt.checkpw(request.form['password'].encode('utf-8'), login_user['password']):
-            session['username'] = request.form.to_dict()['username']
-            user_id = login_user['username']
-            flash('You are successfully logged in')
-            return redirect(url_for('home'))
+                session['username'] = request.form.to_dict()['username']
+                return render_template("home.html", title='Home')
         else:
             flash('Invalid username/password combination!')
-            return render_template('register.html', genres=mongo.db.genres.find())
+            return render_template('login.html')
     else:
         flash('Invalid username/password combination!')
-    return render_template('register.html', genres=mongo.db.genres.find())
+    return render_template('login.html')
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -226,11 +224,7 @@ def register():
     """Register user."""
     if request.method == 'POST':
         existing_user = mongo.db.users.find_one({'username': request.form['username']})
-        password = request.form['password']
-        username = request.form['username']
-        if password == '' or username == '':
-            error = 'Please enter a username and password'
-            return render_template("home.html", title='Home', error=error)
+
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             mongo.db.users.insert_one({
@@ -240,9 +234,10 @@ def register():
             session['username'] = request.form['username']
             return redirect(url_for('home'))
         else:
-            flash('This username already exists!')
-
-    return render_template('register.html', genres=mongo.db.genres.find())
+            flash('Sorry! This username already exists! Did you want to sign in?')
+            return render_template('login.html')
+            
+    return render_template('register.html')
 
 
 @app.route('/endsession')
