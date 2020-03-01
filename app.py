@@ -4,8 +4,7 @@ import sys
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask import Flask, render_template, redirect, request, /
-url_for, flash, session
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 
 
 if os.path.exists("env.py"):
