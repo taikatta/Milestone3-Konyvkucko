@@ -14,7 +14,7 @@
     <div class="row">
 
         {% for book in donation %}
-        {% if book.approved != "N" %}
+        {% if book.approved != False %}
         <div class="collection">
             <div class="collection-item">
                 <div class="col s12 m6 l4 card">
@@ -49,12 +49,14 @@
                     <div class="card-title">
                         <h5>{{book.book_title}} </h5>
                         <h5>{{book.author}}</h5>
-                        {% if 'username' in session and session['username'] == 'admin' %}
                         <div class="button_padding">
                             <a class="btn" href="{{url_for('add_to_books', book_id=book._id)}}">The book has
                                 arrived!</a>
                         </div>
-                        {% endif %}
+                        <div class="button_padding">
+                            <a class="btn" href="{{url_for('approved', book_id=book._id)}}">The book is
+                                approved!</a>
+                        </div>
                     </div>
                 </div>
             </div>

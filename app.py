@@ -188,11 +188,25 @@ def insert_to_donation():
             'author': request.form['author'],
             'book_cover': request.form['book_cover'],
             'ISBN':request.form['ISBN'],
-            'approved':'N',
+            'approved':False,
             'contact_name':request.form['contact_name'],
             'contact_info':request.form['contact_info']
         })
-    return redirect(url_for('book_donation'))  
+    return redirect(url_for('thanks'))  
+
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html', title='Thank you')
+
+@app.route('/approved/<book_id>')
+def approved(book_id):
+    donation = mongo.db.donation
+    donation.update_one( {'_id' : ObjectId(book_id)},
+    { '$set': {
+        'approved':True }
+    })
+    return redirect(url_for('book_donation'))
+
 
 @app.route('/book_detail/<book_id>')
 def book_detail(book_id):
