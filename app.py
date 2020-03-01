@@ -6,10 +6,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
-
-
-
-
 import sys
 
 if os.path.exists("env.py"):
@@ -19,19 +15,10 @@ app = Flask(__name__)
 try:
     app.config["MONGO_DBNAME"] = os.getenv('MONGO_DBNAME')
     app.config["MONGO_URI"] = os.getenv('MONGO_URI')
-    print("MONGO_URI", app.config['MONGO_URI'])
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 except Exception:
-    print("l")
     sys.exit(1)
 
-app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
-
-"""
-app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'konyvkucko'
-app.config["MONGO_URI"] = 'mongodb+srv://root:m0ng0database@myfirstcluster-ptc6u.mongodb.net/konyvkucko?retryWrites=true&w=majority'
-app.config['SECRET_KEY'] ='da9be48bda6f85a3d2a1945b7c163b58'
-"""
 mongo = PyMongo(app)
 
 
