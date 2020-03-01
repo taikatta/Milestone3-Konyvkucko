@@ -126,6 +126,7 @@ def update_donation(book_id):
         'author': request.form['author'],
         'book_title': request.form['book_title'],
         'ISBN':request.form['ISBN'],
+        'approved':False,
         'book_cover': request.form['book_cover'],
         'contact_name':request.form['contact_name'],
         'contact_info':request.form['contact_info']
