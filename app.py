@@ -39,6 +39,10 @@ def add_book():
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
     books = mongo.db.books
+    we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
+    if we_have_it:
+        print(type(we_have_it['nm_of_copies']))
+        print(type(request.form['nm_of_copies']))
     books.insert_one({
             'book_title': request.form['book_title'],
             'author': request.form['author'],
@@ -61,7 +65,7 @@ def edit_book(book_id):
 @app.route('/update_book/<book_id>', methods=["POST"])
 def update_book(book_id):
     books = mongo.db.books
-    books.update({'_id': ObjectId(book_id)}, {
+    books.replace_one({'_id': ObjectId(book_id)}, {
         'book_title': request.form.get('book_title'),
         'author': request.form.get('author'),
         'age_range': request.form.get('age_range'),
@@ -76,7 +80,7 @@ def update_book(book_id):
 
 @app.route('/delete_book/<book_id>')
 def delete_book(book_id):
-    mongo.db.books.remove({'_id': ObjectId(book_id)})
+    mongo.db.books.delete_one({'_id': ObjectId(book_id)})
     return redirect(url_for('allbooks'))
 
 
@@ -98,7 +102,7 @@ def donate_book(book_id):
 
 @app.route('/update_donation/<book_id>', methods=["POST"])
 def update_donation(book_id):
-    mongo.db.wishlist.remove({'_id': ObjectId(book_id)})
+    mongo.db.wishlist.delete_one({'_id': ObjectId(book_id)})
     donation = mongo.db.donation
     donation.insert_one({
         'author': request.form['author'],
@@ -120,7 +124,7 @@ def add_to_books(book_id):
 
 @app.route('/insert_donation/<book_id>', methods=['POST'])
 def insert_donation(book_id):
-    mongo.db.donation.remove({'_id': ObjectId(book_id)})
+    mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
     books = mongo.db.books
     books.insert_one({
             'book_title': request.form['book_title'],
