@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
+{% if 'username' in session and session['username'] == 'admin' %}
 <div class="container">
     <h3>Edit Book</h3>
     <div class="row">
@@ -82,6 +83,13 @@
             </div>
         </form>
     </div>
-
 </div>
-{% endblock %}
+{% else %}
+<section>
+    <div class="wrong">
+        <img src="../static/images/Canva - Portrait Photo of Woman Hiding Her Laugh With Her Hand.jpg">
+    </div>
+</section>
+{% endif %}
+
+{% endblock%}

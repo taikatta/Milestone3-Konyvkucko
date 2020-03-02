@@ -3,7 +3,8 @@ import sys
 from bcrypt import checkpw, gensalt, hashpw
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask import (Flask, flash, redirect, render_template, request, session, url_for)
+from flask import (Flask, flash, redirect, render_template,
+                   request, session, url_for)
 
 
 if os.path.exists("env.py"):
@@ -47,7 +48,8 @@ def insert_book():
             'book_cover': we_have_it['book_cover'],
             'summary': we_have_it['summary'],
             'ISBN': we_have_it['ISBN'],
-            'nm_of_copies': int(we_have_it['nm_of_copies']) + int(request.form['nm_of_copies']),
+            'nm_of_copies': (int(we_have_it['nm_of_copies'])
+                             + int(request.form['nm_of_copies'])),
             'last_donated': we_have_it['last_donated']
         })
     else:
@@ -239,7 +241,6 @@ def register():
         existing_user = mongo.db.users.find_one(
             {'username': request.form['username']}
         )
-
         if existing_user is None:
             hashpass = hashpw(
                 request.form['password'].encode('utf-8'), gensalt())
