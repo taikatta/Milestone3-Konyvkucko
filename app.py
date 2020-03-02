@@ -41,9 +41,18 @@ def insert_book():
     books = mongo.db.books
     we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
     if we_have_it:
-        print(type(we_have_it['nm_of_copies']))
-        print(type(request.form['nm_of_copies']))
-    books.insert_one({
+        books.replace_one({'_id': ObjectId(we_have_it['_id'])}, {
+            'book_title': we_have_it['book_title'],
+            'author': we_have_it['author'],
+            'age_range': we_have_it['age_range'],
+            'book_cover': we_have_it['book_cover'],
+            'summary': we_have_it['summary'],
+            'ISBN': we_have_it['ISBN'],
+            'nm_of_copies': int(we_have_it['nm_of_copies']) + int(request.form['nm_of_copies']),
+            'last_donated': we_have_it['last_donated']
+        })
+    else: 
+        books.insert_one({
             'book_title': request.form['book_title'],
             'author': request.form['author'],
             'age_range': request.form['age_range'],
@@ -52,7 +61,7 @@ def insert_book():
             'ISBN': request.form['ISBN'],
             'nm_of_copies': request.form['nm_of_copies'],
             'last_donated': request.form['last_donated']
-        })
+        }) 
     return redirect(url_for('allbooks'))
 
 
