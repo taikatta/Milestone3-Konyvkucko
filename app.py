@@ -162,7 +162,8 @@ def insert_donation(book_id):
 @app.route('/add_to_wishlist')
 def add_to_wishlist():
     if 'username' in session and session['username'] == 'admin':
-        return render_template('addtowishlist.html', title='Add Book to Wishlist')
+        return render_template('addtowishlist.html',
+                               title='Add Book to Wishlist')
     return render_template('sorry.html')
 
 
