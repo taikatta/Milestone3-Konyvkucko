@@ -3,8 +3,7 @@ import sys
 from bcrypt import checkpw, gensalt, hashpw
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask import (Flask, flash, redirect, render_template, request, session,
-                    url_for)
+from flask import (Flask, flash, redirect, render_template, request, session, url_for)
 
 
 if os.path.exists("env.py"):
@@ -51,7 +50,7 @@ def insert_book():
             'nm_of_copies': int(we_have_it['nm_of_copies']) + int(request.form['nm_of_copies']),
             'last_donated': we_have_it['last_donated']
         })
-    else: 
+    else:
         books.insert_one({
             'book_title': request.form['book_title'],
             'author': request.form['author'],
@@ -61,7 +60,7 @@ def insert_book():
             'ISBN': request.form['ISBN'],
             'nm_of_copies': request.form['nm_of_copies'],
             'last_donated': request.form['last_donated']
-        }) 
+        })
     return redirect(url_for('allbooks'))
 
 
@@ -136,15 +135,15 @@ def insert_donation(book_id):
     mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
     books = mongo.db.books
     books.insert_one({
-            'book_title': request.form['book_title'],
-            'author': request.form['author'],
-            'age_range': request.form['age_range'],
-            'book_cover': request.form['book_cover'],
-            'summary': request.form['summary'],
-            'ISBN': request.form['ISBN'],
-            'nm_of_copies': request.form['nm_of_copies'],
-            'last_donated': request.form['last_donated']
-        })
+        'book_title': request.form['book_title'],
+        'author': request.form['author'],
+        'age_range': request.form['age_range'],
+        'book_cover': request.form['book_cover'],
+        'summary': request.form['summary'],
+        'ISBN': request.form['ISBN'],
+        'nm_of_copies': request.form['nm_of_copies'],
+        'last_donated': request.form['last_donated']
+    })
     return redirect(url_for('allbooks'))
 
 
@@ -157,11 +156,11 @@ def add_to_wishlist():
 def insert_to_wishlist():
     wishlist = mongo.db.wishlist
     wishlist.insert_one({
-            'book_title': request.form['book_title'],
-            'author': request.form['author'],
-            'book_cover': request.form['book_cover'],
-            'ISBN': request.form['ISBN']
-        })
+        'book_title': request.form['book_title'],
+        'author': request.form['author'],
+        'book_cover': request.form['book_cover'],
+        'ISBN': request.form['ISBN']
+    })
     return redirect(url_for('wishlistpage'))
 
 
@@ -179,23 +178,24 @@ def thanks():
 def insert_to_donation():
     donation = mongo.db.donation
     donation.insert_one({
-            'book_title': request.form['book_title'],
-            'author': request.form['author'],
-            'book_cover': request.form['book_cover'],
-            'ISBN': request.form['ISBN'],
-            'approved': False,
-            'contact_name': request.form['contact_name'],
-            'contact_info': request.form['contact_info']
-        })
+        'book_title': request.form['book_title'],
+        'author': request.form['author'],
+        'book_cover': request.form['book_cover'],
+        'ISBN': request.form['ISBN'],
+        'approved': False,
+        'contact_name': request.form['contact_name'],
+        'contact_info': request.form['contact_info']
+    })
     return redirect(url_for('thanks'))
 
 
 @app.route('/approved/<book_id>')
 def approved(book_id):
     donation = mongo.db.donation
-    donation.update_one({'_id': ObjectId(book_id)}, {'$set': {
-        'approved': True}
-    })
+    donation.update_one(
+        {'_id': ObjectId(book_id)},
+        {'$set': {'approved': True}}
+    )
     return redirect(url_for('book_donation'))
 
 
@@ -221,14 +221,14 @@ def login():
     username = request.form['username']
     login_user = mongo.db.users.find_one({'username': username})
     if login_user:
-        if bcrypt.checkpw(request.form['password'].encode('utf-8'), login_user['password']):
-                session['username'] = request.form.to_dict()['username']
-                return render_template("home.html", title='Home')
-        else:
-            flash('Invalid username/password combination!')
-            return render_template('login.html')
-    else:
+        if checkpw(
+                request.form['password'].encode('utf-8'),
+                login_user['password']):
+            session['username'] = request.form.to_dict()['username']
+            return render_template("home.html", title='Home')
         flash('Invalid username/password combination!')
+        return render_template('login.html')
+    flash('Invalid username/password combination!')
     return render_template('login.html')
 
 
@@ -236,19 +236,21 @@ def login():
 def register():
     """Register user."""
     if request.method == 'POST':
-        existing_user = mongo.db.users.find_one({'username': request.form['username']})
+        existing_user = mongo.db.users.find_one(
+            {'username': request.form['username']}
+        )
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            hashpass = hashpw(
+                request.form['password'].encode('utf-8'), gensalt())
             mongo.db.users.insert_one({
                 'username': request.form['username'],
                 'password': hashpass
             })
             session['username'] = request.form['username']
             return redirect(url_for('home'))
-        else:
-            flash('Sorry! This username already exists! Did you want to sign in?')
-            return render_template('login.html')
+        flash('Sorry! This username already exists! Did you want to sign in?')
+        return render_template('login.html')
     return render_template('register.html')
 
 
