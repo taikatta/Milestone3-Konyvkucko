@@ -34,8 +34,17 @@ def allbooks():
 @app.route('/add_book')
 def add_book():
     if 'username' in session and session['username'] == 'admin':
-        return render_template('addbook.html', title='Add Book')
+        return render_template('checkISBN.html', title='Check')
     return render_template('sorry.html')
+
+@app.route('/check_book', methods=['POST'])
+def check_book():
+    we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
+    if we_have_it:
+        the_book = mongo.db.books.find_one({"_id": ObjectId(we_have_it['_id'])})
+        return render_template('updatebook.html', ISBNnm=we_have_it['ISBN'], book=the_book, title='Add Book')
+    else:
+        return render_template('addbook.html', ISBNnm=request.form['ISBN'], title='Add Book')
 
 
 @app.route('/insert_book', methods=['POST'])
