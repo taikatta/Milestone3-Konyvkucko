@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %}
 
-{% if 'username' in session and session['username'] == 'admin' %}
 <div class="container">
     <h5>Please fill the missing information:</h5>
     <div class="row">
@@ -12,7 +11,6 @@
                     <input id="book_title" name="book_title" type="text" value="{{book.book_title}}" required>
                     <label for="book_title">Book Title</label>
                 </div>
-
             </div>
 
             <div class="row">
@@ -21,7 +19,6 @@
                     <input id="author" name="author" type="text" value="{{book.author}}" required>
                     <label for="author">Author</label>
                 </div>
-
             </div>
 
             <div class="row">
@@ -30,7 +27,6 @@
                     <input id="age_range" name="age_range" type="text" value="{{book.age_range}}" required>
                     <label for="age_range">Age range</label>
                 </div>
-
             </div>
 
             <div class="row">
@@ -39,7 +35,6 @@
                     <input id="book_cover" name="book_cover" type="text" value="{{book.book_cover}}" required>
                     <label for="book_cover">Book cover</label>
                 </div>
-
             </div>
 
             <div class="row">
@@ -56,7 +51,6 @@
                     <input id="ISBN" name="ISBN" type="number" value="{{book.ISBN}}" required>
                     <label for="ISBN">ISBN</label>
                 </div>
-
             </div>
 
             <div class="row">
@@ -65,7 +59,6 @@
                     <input id="nm_of_copies" name="nm_of_copies" type="number" value="{{book.nm_of_copies}}" required>
                     <label for="nm_of_copies">Number of copies</label>
                 </div>
-
             </div>
 
             <div class="row">
@@ -75,8 +68,8 @@
                         value="{{book.last_donated}}" required>
                     <label for="last_donated">Last donated</label>
                 </div>
-
             </div>
+
             <div class="row">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Add Book
                     <i class="material-icons right">playlist_add</i>
@@ -85,12 +78,5 @@
         </form>
     </div>
 </div>
-{% else %}
-<section>
-    <div class="wrong">
-        <img src="../static/images/Canva - Portrait Photo of Woman Hiding Her Laugh With Her Hand.jpg">
-    </div>
-</section>
-{% endif %}
 
 {% endblock%}

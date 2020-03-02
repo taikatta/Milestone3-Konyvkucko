@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %}
 
-{% if 'username' in session and session['username'] == 'admin' %}
 <div class="container">
     <h2>Add book to wishlist</h2>
     <div class="row">
@@ -45,12 +44,5 @@
         </form>
     </div>
 </div>
-{% else %}
-<section>
-    <div class="wrong">
-        <img src="../static/images/Canva - Portrait Photo of Woman Hiding Her Laugh With Her Hand.jpg">
-    </div>
-</section>
-{% endif %}
 
 {% endblock%}

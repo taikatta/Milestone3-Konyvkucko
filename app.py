@@ -33,7 +33,9 @@ def allbooks():
 
 @app.route('/add_book')
 def add_book():
-    return render_template('addbook.html', title='Add Book')
+    if 'username' in session and session['username'] == 'admin':
+        return render_template('addbook.html', title='Add Book')
+    return render_template('sorry.html')
 
 
 @app.route('/insert_book', methods=['POST'])
@@ -69,7 +71,9 @@ def insert_book():
 @app.route('/edit_book/<book_id>')
 def edit_book(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template('editbook.html', book=the_book)
+    if 'username' in session and session['username'] == 'admin':
+        return render_template('editbook.html', book=the_book)
+    return render_template('sorry.html')
 
 
 @app.route('/update_book/<book_id>', methods=["POST"])
@@ -90,8 +94,10 @@ def update_book(book_id):
 
 @app.route('/delete_book/<book_id>')
 def delete_book(book_id):
-    mongo.db.books.delete_one({'_id': ObjectId(book_id)})
-    return redirect(url_for('allbooks'))
+    if 'username' in session and session['username'] == 'admin':
+        mongo.db.books.delete_one({'_id': ObjectId(book_id)})
+        return redirect(url_for('allbooks'))
+    return render_template('sorry.html')
 
 
 @app.route('/donation')
@@ -129,29 +135,35 @@ def update_donation(book_id):
 @app.route('/add_to_books/<book_id>')
 def add_to_books(book_id):
     the_book = mongo.db.donation.find_one({"_id": ObjectId(book_id)})
-    return render_template('addtobooks.html', book=the_book)
+    if 'username' in session and session['username'] == 'admin':
+        return render_template('addtobooks.html', book=the_book)
+    return render_template('sorry.html')
 
 
 @app.route('/insert_donation/<book_id>', methods=['POST'])
 def insert_donation(book_id):
-    mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
-    books = mongo.db.books
-    books.insert_one({
-        'book_title': request.form['book_title'],
-        'author': request.form['author'],
-        'age_range': request.form['age_range'],
-        'book_cover': request.form['book_cover'],
-        'summary': request.form['summary'],
-        'ISBN': request.form['ISBN'],
-        'nm_of_copies': request.form['nm_of_copies'],
-        'last_donated': request.form['last_donated']
-    })
-    return redirect(url_for('allbooks'))
+    if 'username' in session and session['username'] == 'admin':
+        mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
+        books = mongo.db.books
+        books.insert_one({
+            'book_title': request.form['book_title'],
+            'author': request.form['author'],
+            'age_range': request.form['age_range'],
+            'book_cover': request.form['book_cover'],
+            'summary': request.form['summary'],
+            'ISBN': request.form['ISBN'],
+            'nm_of_copies': request.form['nm_of_copies'],
+            'last_donated': request.form['last_donated']
+        })
+        return redirect(url_for('allbooks'))
+    return render_template('sorry.html')
 
 
 @app.route('/add_to_wishlist')
 def add_to_wishlist():
-    return render_template('addtowishlist.html', title='Add Book to Wishlist')
+    if 'username' in session and session['username'] == 'admin':
+        return render_template('addtowishlist.html', title='Add Book to Wishlist')
+    return render_template('sorry.html')
 
 
 @app.route('/insert_to_wishlist', methods=['POST'])
@@ -193,12 +205,14 @@ def insert_to_donation():
 
 @app.route('/approved/<book_id>')
 def approved(book_id):
-    donation = mongo.db.donation
-    donation.update_one(
-        {'_id': ObjectId(book_id)},
-        {'$set': {'approved': True}}
-    )
-    return redirect(url_for('book_donation'))
+    if 'username' in session and session['username'] == 'admin':
+        donation = mongo.db.donation
+        donation.update_one(
+            {'_id': ObjectId(book_id)},
+            {'$set': {'approved': True}}
+        )
+        return redirect(url_for('book_donation'))
+    return render_template('sorry.html')
 
 
 @app.route('/book_detail/<book_id>')
