@@ -1,10 +1,10 @@
 import os
-import bcrypt
 import sys
-from os import path
+from bcrypt import checkpw, gensalt, hashpw
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask import Flask, render_template, redirect, request, url_for, flash, session
+from flask import (Flask, flash, redirect, render_template, request, session,
+                    url_for)
 
 
 if os.path.exists("env.py"):
@@ -99,7 +99,7 @@ def book_donation():
 
 
 @app.route('/wishlist')
-def wishlist():
+def wishlistpage():
     return render_template("wishlist.html", wishlist=mongo.db.wishlist.find())
 
 
@@ -162,7 +162,7 @@ def insert_to_wishlist():
             'book_cover': request.form['book_cover'],
             'ISBN': request.form['ISBN']
         })
-    return redirect(url_for('wishlist'))
+    return redirect(url_for('wishlistpage'))
 
 
 @app.route('/add_to_donation')
