@@ -1,32 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
 
+/*------------------- General -------------------------*/
 html {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+/*------------------- Navbar -------------------------*/
+nav {
+  background-color: #4284A4;
+}
+
+/*------------------- Home page -------------------------*/
 .parallax-container {
   height: 400px;
 }
 
+/*---------------- 404 / wrong / thanks for donation page -----------*/
 .wrong {
   background-color: #4284A4;
 }
 
+.link_color {
+  color:black;
+}
+
+/*------------------- Login page -------------------------*/
 .login-join {
   margin: 20px !important;
 }
 
-/* Container holding the image and the text */
+
+/*------- Container holding the image and the text -------*/
 .container {
   position: relative;
 } 
 
 img {
   width:100%;
-}
-
-.link_color {
-  color:black;
 }
 
 .text-block {
@@ -45,14 +55,12 @@ img {
   padding-right: 20px;
 }
 
-.button_padding {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-nav {
-  background-color: #4284A4;
+/*------------------- Donate book ----------------------*/
+.hidden {
+  display: none;
 }
 
+/*------------------- Footer -------------------------*/
 .page-footer  {
   background-color: #4284A4;
 }
@@ -61,11 +69,26 @@ nav {
   text-align: center;
 }
 
+/*------------------- Buttons -------------------------*/
+.button_padding {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
 .go_back_button {
   background-color: #4284A4;
   color: #fff;
 }
 
+.btn {
+  background-color: #4284A4;
+}
+
+.btn:hover{
+  background-color: #60a0bf;
+}
+
+/*------------------- Book cards -------------------------*/
 .row .card {
   padding: 0;
 }
@@ -74,44 +97,28 @@ nav {
   font-size: xx-large;
 }
 
-.btn {
-    background-color: #4284A4;
+/*------------------- Form display -------------------------*/
+.input-field label {
+  color: #60a0bf;
 }
 
-.btn:hover{
-    background-color: #60a0bf;
+.input-field .prefix.active {
+  color: #4284A4;
 }
- 
-  /* label color */
-  .input-field label {
-    color: #60a0bf;
-  }
 
-  /* icon prefix focus color */
-  .input-field .prefix.active {
-    color: #4284A4;
-  }
-
-/* label focus color */
 .input-field input:focus + label {
   color: #60a0bf !important;
 }
 
-/* label underline focus color */
 .input-field input:focus {
   border-bottom: 1px solid #60a0bf !important;
   box-shadow: 0 1px 0 0 #60a0bf !important;
 }
 
-.hidden {
-  display: none;
-}
-
-/* Datepicker display changed */
+/*------------------- Datepicker display -----------------------*/
 .picker__date-display {
   background-color: #4284A4;
 }
-
 
 .picker__day.picker__day--today,
 .picker__close, .picker__today {
@@ -128,6 +135,7 @@ nav {
 }
 
 /*-------------------Media Queries-------------------------*/
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .parallax-container {

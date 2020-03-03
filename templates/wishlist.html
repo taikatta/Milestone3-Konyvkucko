@@ -5,24 +5,22 @@
     <h5>Would you consider donating Hungarian children's books to our library to help us? We are currently looking for
         these
         books:</h5>
-
+    <!-- Book donation button, shorter text on small devices -->
     <div class="s16 m6 l6 button_padding">
         <a class="btn hide-on-small-only" href="{{url_for('add_to_donation')}}">I would like to donate a different
             book!<i class="material-icons right">add</i></a>
         <a class="btn hide-on-med-and-up" href="{{url_for('add_to_donation')}}">Donate a different book<i
                 class="material-icons right">add</i></a>
     </div>
+    <!-- Admin can add the books to Donation list with this button, hidden if not admin is logged in -->
     {% if 'username' in session and session['username'] == 'admin' %}
-
-
     <div class="s16 m6 l6 button_padding">
         <a class="btn" href="{{url_for('add_to_wishlist')}}">Add book to wishlist<i
                 class="material-icons right">add</i></a>
     </div>
     {% endif %}
-
+    <!-- Showing all the books from the wishlist -->
     <div class="row">
-
         {% for book in wishlist %}
         <div class="collection">
             <div class="collection-item">
@@ -35,6 +33,7 @@
                     <div class="card-title">
                         <h5>{{book.book_title}} </h5>
                         <h5>{{book.author}}</h5>
+                        <!-- Book donation button, shorter text on small devices -->
                         <div class="button_padding">
                             <a class="btn hide-on-med-and-down" href="{{url_for('donate_book', book_id=book._id)}}">I
                                 would like to donate this

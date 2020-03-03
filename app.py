@@ -10,6 +10,7 @@ from flask import (Flask, flash, redirect, render_template,
 if os.path.exists("env.py"):
     import env
 
+""" Congfiguration of MongoDB with PyMongo """
 app = Flask(__name__)
 try:
     app.config["MONGO_DBNAME"] = os.getenv('MONGO_DBNAME')
@@ -20,25 +21,28 @@ except Exception:
 
 mongo = PyMongo(app)
 
-
 @app.route('/')
 def home():
+    """ Landing page / home.html """
     return render_template("home.html", title='Home')
 
 
 @app.route('/books')
 def allbooks():
+    """ Render books.html and returns all the books from the database """
     return render_template("books.html", books=mongo.db.books.find())
 
 
 @app.route('/add_book')
 def add_book():
+    """ Checks if user is signed in and is admin, then render checkISBN.html """
     if 'username' in session and session['username'] == 'admin':
         return render_template('checkISBN.html', title='Check')
     return render_template('sorry.html')
 
 @app.route('/check_book', methods=['POST'])
 def check_book():
+    """ Looking for a book by ISBN in database """
     we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
     if we_have_it:
         the_book = mongo.db.books.find_one({"_id": ObjectId(we_have_it['_id'])})
@@ -49,6 +53,8 @@ def check_book():
 
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
+    """ Inserts new book to database if couldn't find ISBN, 
+    or updates number of copies if we have the book """
     books = mongo.db.books
     we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
     if we_have_it:
@@ -81,6 +87,7 @@ def insert_book():
 
 @app.route('/edit_book/<book_id>')
 def edit_book(book_id):
+    """ Checks if user is signed in and is admin, then render editbook.html """
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     if 'username' in session and session['username'] == 'admin':
         return render_template('editbook.html', book=the_book)
@@ -89,6 +96,7 @@ def edit_book(book_id):
 
 @app.route('/update_book/<book_id>', methods=["POST"])
 def update_book(book_id):
+    """ After editing a book replaces old information with new ones """
     books = mongo.db.books
     books.replace_one({'_id': ObjectId(book_id)}, {
         'book_title': request.form.get('book_title'),
@@ -106,6 +114,7 @@ def update_book(book_id):
 
 @app.route('/delete_book/<book_id>')
 def delete_book(book_id):
+    """ Checks if user is signed in and is admin, then deletes a book """
     if 'username' in session and session['username'] == 'admin':
         mongo.db.books.delete_one({'_id': ObjectId(book_id)})
         return redirect(url_for('allbooks'))
@@ -114,22 +123,27 @@ def delete_book(book_id):
 
 @app.route('/donation')
 def book_donation():
+    """ Renders donation.html """
     return render_template("donation.html", donation=mongo.db.donation.find())
 
 
 @app.route('/wishlist')
 def wishlistpage():
+    """ Renders wishlist.html """
     return render_template("wishlist.html", wishlist=mongo.db.wishlist.find())
 
 
 @app.route('/donate_book/<book_id>')
 def donate_book(book_id):
+    """ Finds the book in wishlist then renders donatebook.html """
     the_book = mongo.db.wishlist.find_one({"_id": ObjectId(book_id)})
     return render_template('donatebook.html', book=the_book)
 
 
 @app.route('/update_donation/<book_id>', methods=["POST"])
 def update_donation(book_id):
+    """ Deletes the recently donated book from wishlist 
+    and adds it to donation list """
     mongo.db.wishlist.delete_one({'_id': ObjectId(book_id)})
     donation = mongo.db.donation
     donation.insert_one({
@@ -146,6 +160,9 @@ def update_donation(book_id):
 
 @app.route('/add_to_books/<book_id>')
 def add_to_books(book_id):
+    """ Checks if user is signed in and is admin, 
+    find a book in donation list, 
+    then render addtobook.html """
     the_book = mongo.db.donation.find_one({"_id": ObjectId(book_id)})
     if 'username' in session and session['username'] == 'admin':
         return render_template('addtobooks.html', book=the_book)
@@ -154,6 +171,8 @@ def add_to_books(book_id):
 
 @app.route('/insert_donation/<book_id>', methods=['POST'])
 def insert_donation(book_id):
+    """ Checks if user is signed in and is admin, 
+    then deletes a book from donation list and adds it to book list """
     if 'username' in session and session['username'] == 'admin':
         mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
         books = mongo.db.books
@@ -174,6 +193,7 @@ def insert_donation(book_id):
 
 @app.route('/add_to_wishlist')
 def add_to_wishlist():
+    """ Checks if user is signed in and is admin, then render addtowishlist.html """
     if 'username' in session and session['username'] == 'admin':
         return render_template('addtowishlist.html',
                                title='Add Book to Wishlist')
@@ -182,6 +202,7 @@ def add_to_wishlist():
 
 @app.route('/insert_to_wishlist', methods=['POST'])
 def insert_to_wishlist():
+    """ Adds new book to wishlist """
     wishlist = mongo.db.wishlist
     wishlist.insert_one({
         'book_title': request.form['book_title'],
@@ -194,16 +215,19 @@ def insert_to_wishlist():
 
 @app.route('/add_to_donation')
 def add_to_donation():
+    """ Renders addtodonation.html """
     return render_template('addtodonation.html', title='Add Book to Donation')
 
 
 @app.route('/thanks')
 def thanks():
+    """ Renders thanks.html """
     return render_template('thanks.html', title='Thank you')
 
 
 @app.route('/insert_to_donation', methods=['POST'])
 def insert_to_donation():
+    """ Inserts one book to donation list """
     donation = mongo.db.donation
     donation.insert_one({
         'book_title': request.form['book_title'],
@@ -219,6 +243,8 @@ def insert_to_donation():
 
 @app.route('/approved/<book_id>')
 def approved(book_id):
+    """ Checks if user is signed in and is admin, 
+    then approves the book, making it visible to users. """
     if 'username' in session and session['username'] == 'admin':
         donation = mongo.db.donation
         donation.update_one(
@@ -231,6 +257,7 @@ def approved(book_id):
 
 @app.route('/book_detail/<book_id>')
 def book_detail(book_id):
+    """ Finds a book in book list and renders to bookdetail.html """
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template('bookdetail.html', book=the_book)
 
@@ -238,16 +265,20 @@ def book_detail(book_id):
 # Error Handling of 404
 @app.errorhandler(404)
 def response_404(exception):
+    """ Renders 404.html """
     return render_template('404.html', exception=exception)
 
 
 @app.route('/userlogin', methods=['GET', 'POST'])
 def userlogin():
+    """ Renders login.html """
     return render_template("login.html", title='Login')
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """ Checks username / password, if they match renders home.html,
+    if they do not match renders login.html """
     username = request.form['username']
     login_user = mongo.db.users.find_one({'username': username})
     if login_user:
@@ -264,7 +295,8 @@ def login():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    """Register user."""
+    """ If username already exists renders login.html,
+    if does not exist, renders register.html """
     if request.method == 'POST':
         existing_user = mongo.db.users.find_one(
             {'username': request.form['username']}
@@ -290,6 +322,7 @@ def endsession():
     return render_template("home.html", title='Home')
 
 def generate_library_link(ISBN):
+    """ Generates link to Ireland Libraries """
     library_link = 'http://librariesireland.iii.com/iii/encore/search/C__S' + ISBN
     return library_link
 
