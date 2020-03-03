@@ -59,6 +59,7 @@ def insert_book():
             'book_cover': we_have_it['book_cover'],
             'summary': we_have_it['summary'],
             'ISBN': we_have_it['ISBN'],
+            'link': generate_library_link(we_have_it['ISBN']),
             'nm_of_copies': (int(we_have_it['nm_of_copies'])
                              + int(request.form['nm_of_copies'])),
             'last_donated': we_have_it['last_donated']
@@ -71,6 +72,7 @@ def insert_book():
             'book_cover': request.form['book_cover'],
             'summary': request.form['summary'],
             'ISBN': request.form['ISBN'],
+            'link': generate_library_link(request.form['ISBN']),
             'nm_of_copies': request.form['nm_of_copies'],
             'last_donated': request.form['last_donated']
         })
@@ -95,6 +97,7 @@ def update_book(book_id):
         'book_cover': request.form.get('book_cover'),
         'summary': request.form.get('summary'),
         'ISBN': request.form.get('ISBN'),
+        'link': generate_library_link(request.form.get('ISBN')),
         'nm_of_copies': request.form.get('nm_of_copies'),
         'last_donated': request.form.get('last_donated')
     })
@@ -161,6 +164,7 @@ def insert_donation(book_id):
             'book_cover': request.form['book_cover'],
             'summary': request.form['summary'],
             'ISBN': request.form['ISBN'],
+            'link': generate_library_link(request.form['ISBN']),
             'nm_of_copies': request.form['nm_of_copies'],
             'last_donated': request.form['last_donated']
         })
@@ -284,6 +288,10 @@ def endsession():
     """End session."""
     session.clear()
     return render_template("home.html", title='Home')
+
+def generate_library_link(ISBN):
+    library_link = 'http://librariesireland.iii.com/iii/encore/search/C__S' + ISBN
+    return library_link
 
 
 if __name__ == '__main__':
