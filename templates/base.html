@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- OG meta tags added -->
     <meta property="og:title" content="Könyvkuckó">
     <meta property="og:description" content="Hungarian Books in Ireland">
     <meta property="og:image" content="http://raw.githubusercontent.com/taikatta/Milestone3-Konyvkucko/master/static/images/Canva%20-%20Photo%20Of%20Girl%20Reading%20Book.jpg">
@@ -13,7 +14,7 @@
     <meta property="og:type" content="website" />
     <!-- Favicon added https://www.favicon-generator.org -->
     <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}" type="image/x-icon">
-
+    <!-- Links for Style / Materialize framework / Fonts-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
@@ -22,7 +23,7 @@
 
 <body>
     <header>
-
+        <!-- Navbar -->
         <nav>
             <div class="nav-wrapper">
                 <a class="brand-logo" href="{{ url_for('home') }}">Könyvkuckó</a>
@@ -98,6 +99,7 @@
             </div>
         </div>
     </footer>
+    <!-- Links for main.js / jQuery / Materialize framework-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
