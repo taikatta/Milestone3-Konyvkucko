@@ -46,13 +46,13 @@ def add_book():
 @app.route('/check_book', methods=['POST'])
 def check_book():
     """ Looking for a book by ISBN in database """
-    we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
-    if we_have_it:
+    book = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
+    if book:
         the_book = mongo.db.books.find_one(
-            {"_id": ObjectId(we_have_it['_id'])}
+            {"_id": ObjectId(book['_id'])}
         )
         return render_template('updatebook.html',
-                               ISBNnm=we_have_it['ISBN'],
+                               ISBNnm=book['ISBN'],
                                book=the_book,
                                title='Add Book')
     else:
@@ -66,20 +66,20 @@ def insert_book():
     """ Inserts new book to database if couldn't find ISBN,
     or updates number of copies if we have the book """
     books = mongo.db.books
-    we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
-    if we_have_it:
-        books.replace_one({'_id': ObjectId(we_have_it['_id'])}, {
-            'book_title': we_have_it['book_title'],
-            'author': we_have_it['author'],
-            'age_range': we_have_it['age_range'],
-            'book_cover': we_have_it['book_cover'],
-            'summary': we_have_it['summary'],
-            'ISBN': we_have_it['ISBN'],
-            'link': generate_library_link(we_have_it['ISBN']),
+    book = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
+    if book:
+        books.replace_one({'_id': ObjectId(book['_id'])}, {
+            'book_title': book['book_title'],
+            'author': book['author'],
+            'age_range': book['age_range'],
+            'book_cover': book['book_cover'],
+            'summary': book['summary'],
+            'ISBN': book['ISBN'],
+            'link': generate_library_link(book['ISBN']),
             'nm_of_copies': (
-                int(we_have_it['nm_of_copies']) + int(request.form['nm_of_copies'])
+                int(book['nm_of_copies']) + int(request.form['nm_of_copies'])
             ),
-            'last_donated': we_have_it['last_donated']
+            'last_donated': book['last_donated']
         })
     else:
         books.insert_one({
