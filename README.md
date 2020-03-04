@@ -1,5 +1,28 @@
 # Book Donation / Konyvkucko
 
+## Table of Contents
+
+1. [Summary](#Summary)
+
+2. [Technology Used](#Technology-Used)
+
+2. [Project purpose](#Project-purpose)
+
+3. [UX](#ux)
+    - [Strategy Plane](#strategy-plane)
+    - [Scope Plane](#scope-plane)
+
+4. [Features](#features)
+    - [Existing Features](#existing-features)
+    
+5. [Technologies Used](#technologies-used)
+
+6. [Testing](#testing)
+
+7. [Deployment](#deployment)
+
+8. [Credits](#credits)
+
 This is my third Milestone Project on the Full Stack Web Developer Code Institute course. For Data Centric Development module.
 
 ### Summary
@@ -12,10 +35,22 @@ The purpose of the project is to build a full-stack site that allows the users t
 
 The application allows users to search Hungarian children's books, check the wishlist and donate books either from our wishlist or any book they want. Only the admin can add new books to the database, delete and edit the existing books.
 
-#### Main Technologies:
+The project has the following sections:
 
-* Required: HTML, CSS, JavaScript, Python+Flask, MongoDB
+* Home page
+Contains two background images and a short description.
 
+* Books page
+Contains all the available books, each book has a View button, for more information about the book. When admin is logged in they can see an Add Book button, and an Edit and a Delete button as well.
+
+* Donation page
+On the top of the page the user can see the I would like to donate a book button, and all the books that have been donated to the library, but haven't arrived yet. The admin can see two buttons next to the book, the first one is to move the book from the Donation list to the Books list when the book arrives, the second one is a Delete button, in case the book never arrives. There is a third button, which allows the admin to approve the book, making it visible to users on Donation page. I read about **Defensive Design** and wanted to check the information the users provided when filled the donation form.
+
+* Wishlist
+Contains all the books that we are currently looking for. Users can donate any of them by clicking to the button next to the book. If users decide to donate a book that is not on the list, they can click on the button on top of the page. Admin sees a third button, as they can add a new book to the Wishlist.
+
+* Login / Register page
+I needed an admin account to delete/edit/add books, this is why I created the Login page. Any user can register here, but at the moment registration does not have any advantages. 
 
 ## UX
 
@@ -51,31 +86,18 @@ Sans-serif is used as the default backup font in case when Nunito Sans was not p
 
 #### Colors:
 
-* ![#4284A4](https://placehold.it/15/4284A4/000000?text=+) `#4284A4` - Primary background color
+* ![#4284A4](https://placehold.it/15/4284A4/000000?text=+) #4284A4 - Primary background color
 
-* ![#60a0bf](https://placehold.it/15/60a0bf/000000?text=+) `#60a0bf` - Buuton hover color, Form input field label color, Datepicker hover color
+* ![#60a0bf](https://placehold.it/15/60a0bf/000000?text=+) #60a0bf - Buuton hover color, Form input field label color, Datepicker hover color
 
-* ![#5B8BA3](https://placehold.it/15/5B8BA3/000000?text=+) `#5B8BA3` - 404 page text block background color
+* ![#5B8BA3](https://placehold.it/15/5B8BA3/000000?text=+) #5B8BA3 - 404 page text block background color
 
 
 #### Wireframes:
 
-Originally on the home page I wanted to have one background picture and 3 of our latest donated books, but then I discovered Parallax (Materialize). Parallax is an effect where the background image is moved at a different speed than the foreground content while scrolling.
-
 #### Initial Wireframes:
 
-<details>
-<summary>Mobile View</summary>
-
-<p align="center">
-    <iframe height="750" src="https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_home.pdf" alt="Home page mobile wireframe"></iframe>
-</p>
-
-<p align="center">
-<iframe height="350" src="https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_donation.pdf" alt="Donation page mobile wireframe"></iframe>
-</p>
-</details>
-
+Originally on the home page I wanted to have one background picture and 3 of our latest donated books, but then I discovered Parallax (Materialize). Parallax is an effect where the background image is moved at a different speed than the foreground content while scrolling, so I decided to use Parallax instead.
 
 [Mobile View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_home.pdf)
 
@@ -110,21 +132,34 @@ Originally on the home page I wanted to have one background picture and 3 of our
 
 #### Features Left to Implement:
 
-## Technologies
+## Technology Used:
 
-* HTML5 
-* CSS
+* Required: HTML, CSS, JavaScript, Python+Flask, MongoDB
+
+#### Languages, Frameworks, Editors & Version Control:
+
+* HTML5
+* CSS3
 * JavaScript
 * Python
-* MongoDB
-* Visual Studio Code
-* Git
-* [GitHub](https://github.com/) 
-* [Font Awesome](https://fontawesome.com/) 
-* [Google Fonts](https://fonts.google.com/) 
-* [moquaps](https://moqups.com)
-* [compressjpeg](https://compressjpeg.com/)
+* <a href="https://materializecss.com/"> Materialize Framework:</a> Used  the Materialize framework for grid system, structuring layout, cards, forms, button styling and responsive navigation bar.
+* <A href="https://palletsprojects.com/p/flask/">Flask</a> Used Flask framework to compile modules and libraries.
+* jQuery: Used to initialize elements of Materialize framework. For the home page (Parallax), Navbar collapse, datepicker.
+* VSCode: Was used as a code editor.
+* Git: Version control.
+* <a href="https://github.com">Github</a> Used as a Git repository hosting service
+* <a href="https://www.heroku.com/">Heroku</a> Is a container-based cloud Platform, I used Heroku to deploy this app.
 
+#### Tools Used:
+
+* <a href="https://www.mongodb.com/cloud/atlas">MongoDB</a> Is used to store the database in the cloud.
+* <a href="https://fonts.google.com/specimen/Nunito">Google Fonts</a>Used Nunito Sans fonts
+* <a href="https://www.favicon-generator.org/">Favicon Generator</a> Used to find the right Favicon for the project.
+* <a href="https://compressjpeg.com/">compressjpg</a> Used to compress all my images.
+* <a href="https://www.canva.com/photos/">Canva photos</a> Used to find the background images.
+* <a href="https://validator.w3.org/">W3C Validator</a> Used to check the validity of my HTML and CSS.
+* <a href="http://pep8online.com/">PEP 8 Online Validator</a> Used to check my Python code.
+* <a href="https://moqups.com">moquaps</a> Used to create wireframes.
 
 ## Testing
 
@@ -137,16 +172,3 @@ Originally on the home page I wanted to have one background picture and 3 of our
 #### Acknowledgementsg
 
 ## Deployment
-
-
-
-
-Go Back button from: https://www.computerhope.com/issues/ch000317.htm 
-
-
-
-
-/*
-I am using Materialize for card reveal, but wanted to change it to reveal the summary by hover.I got the solution from stack overflow: https://bit.ly/39S4X6f -->
-*/ 
-
