@@ -270,6 +270,11 @@ def response_404(exception):
     """ Renders 404.html """
     return render_template('404.html', exception=exception)
 
+# Error Handling of 405
+@app.errorhandler(405)
+def response_405(exception):
+    """ Renders 405.html """
+    return render_template('405.html', exception=exception)
 
 @app.route('/userlogin', methods=['GET', 'POST'])
 def userlogin():
