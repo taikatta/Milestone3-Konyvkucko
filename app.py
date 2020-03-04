@@ -21,6 +21,7 @@ except Exception:
 
 mongo = PyMongo(app)
 
+
 @app.route('/')
 def home():
     """ Landing page / home.html """
@@ -35,18 +36,25 @@ def allbooks():
 
 @app.route('/add_book')
 def add_book():
-    """ Checks if user is signed in and is admin, then render checkISBN.html """
+    """ Checks if user is signed in and is admin,
+    then render checkISBN.html """
     if 'username' in session and session['username'] == 'admin':
         return render_template('checkISBN.html', title='Check')
     return render_template('sorry.html')
+
 
 @app.route('/check_book', methods=['POST'])
 def check_book():
     """ Looking for a book by ISBN in database """
     we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
     if we_have_it:
-        the_book = mongo.db.books.find_one({"_id": ObjectId(we_have_it['_id'])})
-        return render_template('updatebook.html', ISBNnm=we_have_it['ISBN'], book=the_book, title='Add Book')
+        the_book = mongo.db.books.find_one(
+            {"_id": ObjectId(we_have_it['_id'])}
+        )
+        return render_template('updatebook.html',
+                               ISBNnm=we_have_it['ISBN'],
+                               book=the_book,
+                               title='Add Book')
     else:
         return render_template('addbook.html', ISBNnm=request.form['ISBN'], title='Add Book')
 
@@ -270,11 +278,13 @@ def response_404(exception):
     """ Renders 404.html """
     return render_template('404.html', exception=exception)
 
+
 # Error Handling of 405
 @app.errorhandler(405)
 def response_405(exception):
     """ Renders 405.html """
     return render_template('405.html', exception=exception)
+
 
 @app.route('/userlogin', methods=['GET', 'POST'])
 def userlogin():
