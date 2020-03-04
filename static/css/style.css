@@ -15,6 +15,10 @@ nav {
   height: 400px;
 }
 
+.header {
+  text-align: center;
+}
+
 /*---------------- 404 / wrong / thanks for donation page -----------*/
 .wrong {
   background-color: #4284A4;
