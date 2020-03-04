@@ -56,12 +56,14 @@ def check_book():
                                book=the_book,
                                title='Add Book')
     else:
-        return render_template('addbook.html', ISBNnm=request.form['ISBN'], title='Add Book')
+        return render_template('addbook.html',
+                               ISBNnm=request.form['ISBN'],
+                               title='Add Book')
 
 
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
-    """ Inserts new book to database if couldn't find ISBN, 
+    """ Inserts new book to database if couldn't find ISBN,
     or updates number of copies if we have the book """
     books = mongo.db.books
     we_have_it = mongo.db.books.find_one({'ISBN': request.form['ISBN']})
@@ -74,8 +76,9 @@ def insert_book():
             'summary': we_have_it['summary'],
             'ISBN': we_have_it['ISBN'],
             'link': generate_library_link(we_have_it['ISBN']),
-            'nm_of_copies': (int(we_have_it['nm_of_copies'])
-                             + int(request.form['nm_of_copies'])),
+            'nm_of_copies': (
+                int(we_have_it['nm_of_copies']) + int(request.form['nm_of_copies'])
+            ),
             'last_donated': we_have_it['last_donated']
         })
     else:
@@ -143,7 +146,8 @@ def wishlistpage():
 
 @app.route('/donate_book/<book_id>')
 def donate_book(book_id):
-    """ If book_id is valid, finds the book in wishlist then renders donatebook.html """
+    """ If book_id is valid, finds the book in wishlist,
+    then renders donatebook.html """
     if ObjectId.is_valid(book_id):
         the_book = mongo.db.wishlist.find_one({"_id": ObjectId(book_id)})
         return render_template('donatebook.html', book=the_book)
@@ -152,7 +156,7 @@ def donate_book(book_id):
 
 @app.route('/update_donation/<book_id>', methods=["POST"])
 def update_donation(book_id):
-    """ Deletes the recently donated book from wishlist 
+    """ Deletes the recently donated book from wishlist
     and adds it to donation list """
     mongo.db.wishlist.delete_one({'_id': ObjectId(book_id)})
     donation = mongo.db.donation
@@ -170,8 +174,8 @@ def update_donation(book_id):
 
 @app.route('/add_to_books/<book_id>')
 def add_to_books(book_id):
-    """ Checks if user is signed in and is admin, 
-    find a book in donation list, 
+    """ Checks if user is signed in and is admin,
+    find a book in donation list,
     then render addtobook.html """
     the_book = mongo.db.donation.find_one({"_id": ObjectId(book_id)})
     if 'username' in session and session['username'] == 'admin':
@@ -181,7 +185,7 @@ def add_to_books(book_id):
 
 @app.route('/insert_donation/<book_id>', methods=['POST'])
 def insert_donation(book_id):
-    """ Checks if user is signed in and is admin, 
+    """ Checks if user is signed in and is admin,
     then deletes a book from donation list and adds it to book list """
     if 'username' in session and session['username'] == 'admin':
         mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
@@ -203,7 +207,8 @@ def insert_donation(book_id):
 
 @app.route('/add_to_wishlist')
 def add_to_wishlist():
-    """ Checks if user is signed in and is admin, then render addtowishlist.html """
+    """ Checks if user is signed in and is admin,
+    then render addtowishlist.html """
     if 'username' in session and session['username'] == 'admin':
         return render_template('addtowishlist.html',
                                title='Add Book to Wishlist')
@@ -253,7 +258,7 @@ def insert_to_donation():
 
 @app.route('/approved/<book_id>')
 def approved(book_id):
-    """ Checks if user is signed in and is admin, 
+    """ Checks if user is signed in and is admin,
     then approves the book, making it visible to users. """
     if 'username' in session and session['username'] == 'admin':
         donation = mongo.db.donation
@@ -337,6 +342,7 @@ def endsession():
     """End session."""
     session.clear()
     return render_template("home.html", title='Home')
+
 
 def generate_library_link(ISBN):
     """ Generates link to Ireland Libraries """
