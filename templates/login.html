@@ -4,29 +4,28 @@
 <div class="container">
     <h3>Sign in</h3>
     <div class="row login-join">
-        <form class='login-row form' method="POST" action="{{ url_for('login') }}" >
-            <div class="row">
+        <form method="POST" action="{{ url_for('login') }}">
+            <div>
                 <label for="username">Username : </label>
                 <input type="text" name="username" />
             </div>
-            <div class="row">
+            <div>
                 <label for="password">Password : </label>
                 <input type="password" name="password" />
             </div>
-            <div class="col-sm-12 col-md-5 col-lg-2">
-                <div class="row">
-                    <button type='submit' class="btn waves-effect waves-light"> Login </button>
-                </div>
+            <div>
+                <button type='submit' class="btn waves-effect waves-light"> Login </button>
             </div>
+            <br>
             {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
             <p id='flashed_book'>{{ message }}</p>
             {% endfor %} {% endif %} {% endwith %}
         </form>
-    </div>
-    <div class="row">
-        <span>
-            Need an account? <a href="{{ url_for('register') }}">Sign up</a>
-        </span>
+        <div>
+            <span>
+                Need an account? <a href="{{ url_for('register') }}">Sign up</a>
+            </span>
+        </div>
     </div>
 </div>
 

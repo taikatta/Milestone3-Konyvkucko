@@ -4,24 +4,25 @@
 <div class="container">
     <h3>Join today</h3>
     <div class="row login-join">
-        <form class='login-row form' method="POST" action="{{ url_for('register') }}">
-            <div class="row">
+        <form method="POST" action="{{ url_for('register') }}">
+            <div>
                 <label for="username">Username : </label>
-                <input name="username" id="username"></input>
+                <input type="text" name="username" id="username"></input>
             </div>
-            <div class="row">
+            <div>
                 <label for="password">Password : </label>
                 <input type="password" id="password" name="password"> </input>
-            </div>            
-            <div class="row">
+            </div>
+            <div>
                 <button type='submit' class="btn waves-effect waves-light"> Create user </button>
             </div>
+            <br>
         </form>
-    </div>
-    <div class="row">
-        <span>
-            Already have an account? <a href="{{ url_for('userlogin') }}">Sign In</a>
-        </span>
+        <div>
+            <span>
+                Already have an account? <a href="{{ url_for('userlogin') }}">Sign In</a>
+            </span>
+        </div>
     </div>
 </div>
 {% endblock %}
