@@ -131,6 +131,13 @@ def delete_book(book_id):
         return redirect(url_for('allbooks'))
     return render_template('sorry.html')
 
+@app.route('/delete_offered_book/<book_id>')
+def delete_offered_book(book_id):
+    if 'username' in session and session['username'] == 'admin':
+        mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
+        return redirect(url_for('book_donation'))
+    return render_template('sorry.html')
+
 
 @app.route('/donation')
 def book_donation():
