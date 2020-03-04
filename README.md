@@ -4,7 +4,7 @@ This is my third Milestone Project on the Full Stack Web Developer Code Institut
 
 ### Summary
 
-I am the founder of Könyvkuckó, the Hungarian Children's Library in Ireland. My book collection is about 120 books, I got books from authors, organizations, individuals. The launch of the Hungarian children's book was on the 29th of October, 2019. The books are hosted by Deansgrange Library.
+I am the founder of Könyvkuckó, the Hungarian Children's Library in Ireland. My book collection is about 120 books, all our books were donated. I got books from authors, organizations, individuals. The launch of the Hungarian children's book was on the 29th of October, 2019. The books are hosted by Deansgrange Library, but they can be requested via the inter-library loans system from other libraries who are part of Libraries Ireland. The requested books will be delivered to the users' local library.
 
 #### Project purpose: 
 
@@ -28,6 +28,8 @@ The application allows users to search Hungarian children's books, check the wis
 * As a user I would like to be able to donate books to the Hungarian Collection
 
 * As a user I would like to access the Wishlist to see which books are needed by the library
+
+* As a user I would like to be able to contact Konyvkucko with my questions
 
 #### Admin stories:
 
@@ -58,11 +60,53 @@ Sans-serif is used as the default backup font in case when Nunito Sans was not p
 
 #### Wireframes:
 
+Originally on the home page I wanted to have one background picture and 3 of our latest donated books, but then I discovered Parallax (Materialize). Parallax is an effect where the background image is moved at a different speed than the foreground content while scrolling.
+
 #### Initial Wireframes:
+
+<details>
+<summary>Mobile View</summary>
+
+<p align="center">
+    <iframe height="750" src="https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_home.pdf" alt="Home page mobile wireframe"></iframe>
+</p>
+
+<p align="center">
+<iframe height="350" src="https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_donation.pdf" alt="Donation page mobile wireframe"></iframe>
+</p>
+</details>
+
+
+[Mobile View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_home.pdf)
+
+[Mobile View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_donation.pdf)
+
+[Desktop View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_desktop_home.pdf)
+
+[Desktop View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_desktop_donation.pdf)
+
 
 #### Final Wireframes:
 
+[Mobile View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_home.pdf)
+
+[Mobile View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_donation.pdf)
+
+[Mobile View - Books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_book.pdf)
+
+[Mobile View - Books Admin View](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_book_admin_view.pdf)
+
+[Desktop View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_home.pdf)
+
+[Desktop View - Donation Admin View](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_donation_admin_view.pdf)
+
+[Desktop View - Books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_book.pdf)
+
+[Desktop View - Books Admin view](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_book_admin_view.pdf)
+
 ## Features:
+
+* facebook for developers I used the [Sharing Debugger](https://developers.facebook.com/tools/debug/) to see the information that is used when my website content is shared on Facebook, Messenger and other places.
 
 #### Features Left to Implement:
 
@@ -80,7 +124,7 @@ Sans-serif is used as the default backup font in case when Nunito Sans was not p
 * [Google Fonts](https://fonts.google.com/) 
 * [moquaps](https://moqups.com)
 * [compressjpeg](https://compressjpeg.com/)
-* facebook for developers I used the [Sharing Debugger](https://developers.facebook.com/tools/debug/) to see the information that is used when my website content is shared on Facebook, Messenger and other places.
+
 
 ## Testing
 
