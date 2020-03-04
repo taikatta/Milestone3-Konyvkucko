@@ -135,9 +135,11 @@ def wishlistpage():
 
 @app.route('/donate_book/<book_id>')
 def donate_book(book_id):
-    """ Finds the book in wishlist then renders donatebook.html """
-    the_book = mongo.db.wishlist.find_one({"_id": ObjectId(book_id)})
-    return render_template('donatebook.html', book=the_book)
+    """ If book_id is valid, finds the book in wishlist then renders donatebook.html """
+    if ObjectId.is_valid(book_id):
+        the_book = mongo.db.wishlist.find_one({"_id": ObjectId(book_id)})
+        return render_template('donatebook.html', book=the_book)
+    return render_template('sorry.html')
 
 
 @app.route('/update_donation/<book_id>', methods=["POST"])
