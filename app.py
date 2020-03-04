@@ -95,7 +95,7 @@ def insert_book():
         })
     return redirect(url_for('allbooks'))
 
-  
+
 @app.route('/edit_book/<book_id>')
 def edit_book(book_id):
     """ Checks if user is signed in and is admin, then render editbook.html """
@@ -370,8 +370,8 @@ def endsession():
 
 def generate_library_link(ISBN):
     """ Generates link to Ireland Libraries """
-    library_link = 'http://librariesireland.iii.com/iii/encore/search/C__S' + ISBN
-    return library_link
+    library = 'http://librariesireland.iii.com/iii/encore/search/C__S' + ISBN
+    return library
 
 
 if __name__ == '__main__':
