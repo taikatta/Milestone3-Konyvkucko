@@ -95,14 +95,16 @@ def insert_book():
         })
     return redirect(url_for('allbooks'))
 
-
+  
 @app.route('/edit_book/<book_id>')
 def edit_book(book_id):
     """ Checks if user is signed in and is admin, then render editbook.html """
-    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    if 'username' in session and session['username'] == 'admin':
-        return render_template('editbook.html', book=the_book)
-    return render_template('sorry.html')
+    if ObjectId.is_valid(book_id):
+        the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        if 'username' in session and session['username'] == 'admin':
+            return render_template('editbook.html', book=the_book)
+        return render_template('sorry.html')
+    return render_template('nosuchbook.html')
 
 
 @app.route('/update_book/<book_id>', methods=["POST"])
@@ -126,17 +128,22 @@ def update_book(book_id):
 @app.route('/delete_book/<book_id>')
 def delete_book(book_id):
     """ Checks if user is signed in and is admin, then deletes a book """
-    if 'username' in session and session['username'] == 'admin':
-        mongo.db.books.delete_one({'_id': ObjectId(book_id)})
-        return redirect(url_for('allbooks'))
-    return render_template('sorry.html')
+    if ObjectId.is_valid(book_id):
+        if 'username' in session and session['username'] == 'admin':
+            mongo.db.books.delete_one({'_id': ObjectId(book_id)})
+            return redirect(url_for('allbooks'))
+        return render_template('sorry.html')
+    return render_template('nosuchbook.html')
+
 
 @app.route('/delete_offered_book/<book_id>')
 def delete_offered_book(book_id):
-    if 'username' in session and session['username'] == 'admin':
-        mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
-        return redirect(url_for('book_donation'))
-    return render_template('sorry.html')
+    if ObjectId.is_valid(book_id):
+        if 'username' in session and session['username'] == 'admin':
+            mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
+            return redirect(url_for('book_donation'))
+        return render_template('sorry.html')
+    return render_template('nosuchbook.html')
 
 
 @app.route('/donation')
@@ -165,18 +172,20 @@ def donate_book(book_id):
 def update_donation(book_id):
     """ Deletes the recently donated book from wishlist
     and adds it to donation list """
-    mongo.db.wishlist.delete_one({'_id': ObjectId(book_id)})
-    donation = mongo.db.donation
-    donation.insert_one({
-        'author': request.form['author'],
-        'book_title': request.form['book_title'],
-        'ISBN': request.form['ISBN'],
-        'approved': False,
-        'book_cover': request.form['book_cover'],
-        'contact_name': request.form['contact_name'],
-        'contact_info': request.form['contact_info']
-    })
-    return redirect(url_for('thanks'))
+    if ObjectId.is_valid(book_id):
+        mongo.db.wishlist.delete_one({'_id': ObjectId(book_id)})
+        donation = mongo.db.donation
+        donation.insert_one({
+            'author': request.form['author'],
+            'book_title': request.form['book_title'],
+            'ISBN': request.form['ISBN'],
+            'approved': False,
+            'book_cover': request.form['book_cover'],
+            'contact_name': request.form['contact_name'],
+            'contact_info': request.form['contact_info']
+        })
+        return redirect(url_for('thanks'))
+    return render_template('nosuchbook.html')
 
 
 @app.route('/add_to_books/<book_id>')
@@ -184,32 +193,36 @@ def add_to_books(book_id):
     """ Checks if user is signed in and is admin,
     find a book in donation list,
     then render addtobook.html """
-    the_book = mongo.db.donation.find_one({"_id": ObjectId(book_id)})
-    if 'username' in session and session['username'] == 'admin':
-        return render_template('addtobooks.html', book=the_book)
-    return render_template('sorry.html')
+    if ObjectId.is_valid(book_id):
+        the_book = mongo.db.donation.find_one({"_id": ObjectId(book_id)})
+        if 'username' in session and session['username'] == 'admin':
+            return render_template('addtobooks.html', book=the_book)
+        return render_template('sorry.html')
+    return render_template('nosuchbook.html')
 
 
 @app.route('/insert_donation/<book_id>', methods=['POST'])
 def insert_donation(book_id):
     """ Checks if user is signed in and is admin,
     then deletes a book from donation list and adds it to book list """
-    if 'username' in session and session['username'] == 'admin':
-        mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
-        books = mongo.db.books
-        books.insert_one({
-            'book_title': request.form['book_title'],
-            'author': request.form['author'],
-            'age_range': request.form['age_range'],
-            'book_cover': request.form['book_cover'],
-            'summary': request.form['summary'],
-            'ISBN': request.form['ISBN'],
-            'link': generate_library_link(request.form['ISBN']),
-            'nm_of_copies': request.form['nm_of_copies'],
-            'last_donated': request.form['last_donated']
-        })
-        return redirect(url_for('allbooks'))
-    return render_template('sorry.html')
+    if ObjectId.is_valid(book_id):
+        if 'username' in session and session['username'] == 'admin':
+            mongo.db.donation.delete_one({'_id': ObjectId(book_id)})
+            books = mongo.db.books
+            books.insert_one({
+                'book_title': request.form['book_title'],
+                'author': request.form['author'],
+                'age_range': request.form['age_range'],
+                'book_cover': request.form['book_cover'],
+                'summary': request.form['summary'],
+                'ISBN': request.form['ISBN'],
+                'link': generate_library_link(request.form['ISBN']),
+                'nm_of_copies': request.form['nm_of_copies'],
+                'last_donated': request.form['last_donated']
+            })
+            return redirect(url_for('allbooks'))
+        return render_template('sorry.html')
+    return render_template('nosuchbook.html')
 
 
 @app.route('/add_to_wishlist')
@@ -267,21 +280,25 @@ def insert_to_donation():
 def approved(book_id):
     """ Checks if user is signed in and is admin,
     then approves the book, making it visible to users. """
-    if 'username' in session and session['username'] == 'admin':
-        donation = mongo.db.donation
-        donation.update_one(
-            {'_id': ObjectId(book_id)},
-            {'$set': {'approved': True}}
-        )
-        return redirect(url_for('book_donation'))
-    return render_template('sorry.html')
+    if ObjectId.is_valid(book_id):
+        if 'username' in session and session['username'] == 'admin':
+            donation = mongo.db.donation
+            donation.update_one(
+                {'_id': ObjectId(book_id)},
+                {'$set': {'approved': True}}
+            )
+            return redirect(url_for('book_donation'))
+        return render_template('sorry.html')
+    return render_template('nosuchbook.html')
 
 
 @app.route('/book_detail/<book_id>')
 def book_detail(book_id):
     """ Finds a book in book list and renders to bookdetail.html """
-    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template('bookdetail.html', book=the_book)
+    if ObjectId.is_valid(book_id):
+        the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        return render_template('bookdetail.html', book=the_book)
+    return render_template('nosuchbook.html')
 
 
 # Error Handling of 404
