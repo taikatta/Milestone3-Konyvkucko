@@ -199,8 +199,8 @@ The application structure and mobile-first layout was tested on Google Chrome, F
 
 | Nr | Test          | Before image  | After image  | Test result |
 | ---|:-------------:| :-----:| :-----:| :-----:|
-| 1 | Library Link      |    ![Book detail page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_library_link1.png "Book detail page") |![Library page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_library_link2.png "Library Link") | Passed |
-| 2 |       https://konyvkucko.herokuapp.com/add_book|   ![add_book as admin](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_add_book_admin.png "Admin") |![add_book as non admin](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_add_book_non_admin.png "Not Admin") |Passed |
+| 1 | Library Link |    ![Book detail page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_library_link1.png "Book detail page") |![Library page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_library_link2.png "Library Link") | Passed |
+| 2 |  add_book |   ![add_book as admin](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_add_book_admin.png "Admin") |![add_book as non admin](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_add_book_non_admin.png "Not Admin") |Passed |
 
 #### Code Validation
 
