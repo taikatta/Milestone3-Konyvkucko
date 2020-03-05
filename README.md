@@ -145,6 +145,10 @@ Originally on the home page I wanted to have one background picture and 3 of our
 
 I shared Konvkucko's link with Messenger as I wanted the app to be tested on more different devices. When a link is shared there is a nice feature: a little preview of the link’s content, with title, short description and an image of the designated page. This data comes from scraping the link for `Open Graph (OG)` data. I added og meta tags to my base.html and used Sharing Debugger (facebook developer tools) to debug.
 
+#### Link to Ireland Libraries
+
+On Books page user can check more details about each book by clicking the `View` button next to the book. This leads the user to the book detail page, where the `Borrow this book!` button takes the user to Libraries Ireland page, and after login user can request the book.
+
 #### Features Left to Implement:
 
 * As the application is about Hungarian books, for Hungarian families living in Ireland I plan to translate it Hungarian.
