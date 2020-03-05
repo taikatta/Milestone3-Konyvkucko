@@ -4,24 +4,29 @@
 
 1. [Summary](#Summary)
 
-2. [Technology Used](#Technology-Used)
-
 2. [Project purpose](#Project-purpose)
 
 3. [UX](#ux)
-    - [Strategy Plane](#strategy-plane)
-    - [Scope Plane](#scope-plane)
+    - [User stories](#User-stories)
+    - [Admin stories](#Admin-stories)
 
-4. [Features](#features)
-    - [Existing Features](#existing-features)
+4. [Design and colors](#Design-and-colors:)
     
-5. [Technologies Used](#technologies-used)
+5. [Wireframes](#Wireframes)
 
-6. [Testing](#testing)
+6. [Features](#Features)
 
-7. [Deployment](#deployment)
+7. [Technology Used](#Technology-Used)
 
-8. [Credits](#credits)
+8. [Testing](#Testing)
+
+9. [Credits](#Credits)
+
+10. [Media](#Media)
+
+11. [Acknowledgements](#Acknowledgements)
+
+12. [DEPLOYMENT](#DEPLOYMENT)
 
 This is my third Milestone Project on the Full Stack Web Developer Code Institute course. For Data Centric Development module.
 
@@ -29,7 +34,7 @@ This is my third Milestone Project on the Full Stack Web Developer Code Institut
 
 I am the founder of Könyvkuckó, the Hungarian Children's Library in Ireland. My book collection is about 120 books, all our books were donated. I got books from authors, organizations, individuals. The launch of the Hungarian children's book was on the 29th of October, 2019. The books are hosted by Deansgrange Library, but they can be requested via the inter-library loans system from other libraries who are part of Libraries Ireland. The requested books will be delivered to the users' local library.
 
-#### Project purpose: 
+### Project purpose: 
 
 The purpose of the project is to build a full-stack site that allows the users to manage a common dataset about a particular domain.
 
@@ -52,7 +57,7 @@ Contains all the books that we are currently looking for. Users can donate any o
 * Login / Register page
 I needed an admin account to delete/edit/add books, this is why I created the Login page. Any user can register here, but at the moment registration does not have any advantages. 
 
-## UX
+### UX
 
 #### User stories:
 
@@ -74,7 +79,7 @@ I needed an admin account to delete/edit/add books, this is why I created the Lo
 
 * As an admin I want to be able to move books from wishlist to donation list
 
-#### Design and colors:
+### Design and colors:
 
 #### Fonts:
 
@@ -93,7 +98,7 @@ Sans-serif is used as the default backup font in case when Nunito Sans was not p
 * ![#5B8BA3](https://placehold.it/15/5B8BA3/000000?text=+) #5B8BA3 - 404 page text block background color
 
 
-#### Wireframes:
+### Wireframes:
 
 #### Initial Wireframes:
 
@@ -126,13 +131,15 @@ Originally on the home page I wanted to have one background picture and 3 of our
 
 [Desktop View - Books Admin view](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_book_admin_view.pdf)
 
-## Features:
 
-* facebook for developers I used the [Sharing Debugger](https://developers.facebook.com/tools/debug/) to see the information that is used when my website content is shared on Facebook, Messenger and other places.
+### Features:
 
 #### Features Left to Implement:
 
-## Technology Used:
+* As the application is about Hungarian books, for Hungarian families living in Ireland I plan to translate it Hungarian.
+* I would like to add a search bar, where users can search books by author, title and age category.
+
+### Technology Used:
 
 * Required: HTML, CSS, JavaScript, Python+Flask, MongoDB
 
@@ -160,15 +167,67 @@ Originally on the home page I wanted to have one background picture and 3 of our
 * <a href="https://validator.w3.org/">W3C Validator</a> Used to check the validity of my HTML and CSS.
 * <a href="http://pep8online.com/">PEP 8 Online Validator</a> Used to check my Python code.
 * <a href="https://moqups.com">moquaps</a> Used to create wireframes.
+* facebook for developers: I used the [Sharing Debugger](https://developers.facebook.com/tools/debug/) to see the information that is used when my website content is shared on Facebook, Messenger and other places.
 
-## Testing
+### Testing
 
-#### Operational Test
+Throughout the development of the project, I carried out testing. I used the Chrome Developer Tools consistently.
 
-## Credits
+The application structure and mobile-first layout was tested on Google Chrome, Firefox and Safari. The application was tested on two smartphone devices, iPhone11 and iPhone5. And on one iPad.
 
-#### Media
+#### Code Validation
 
-#### Acknowledgementsg
+* CSS was validated using W3C CSS Validation Service - Jigsaw, no errors were found.
 
-## Deployment
+* HTML was validated using W3C Markup Validation Service.
+
+* Python code was validated using PEP8 online checker.
+
+#### Defensive design
+
+Defensive design was built into each template in app.py file.
+
+* Only admin can add/ delete/ edit books, these buttons are hidden from users.
+* Flash warnings were used when user entered already taken username at registration, or wrong password/username when signing in.
+
+### Credits
+
+### Media
+
+### Acknowledgements
+
+### DEPLOYMENT
+
+#### CLONINNG - GITHUB 
+
+1. Follow this link to my [Repository on Github](https://github.com/taikatta/Milestone3-Konyvkucko) and open it.
+2. Click `Clone or Download`.
+3. In the Clone with HTTPs section, click the `copy` icon.
+4. In your local IDE open Git Bash.
+5. Change the current working directory to where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied earlier.
+7. Press enter and your local clone will be ready.
+ 
+
+#### DEPLOY TO HEROKU 
+
+1. On Heroku create an account and log in.
+2. Click `new` and `create new app`.
+3. Choose a unique name for your app, select region and click on `Create App`
+4. Under the `Settings` click `Reveal Config Vars` and set IP to 0.0.0.0 and the PORT to 5000
+5. Go to the CLI and type `$ sudo snap install --classic heroku`
+6. Type `$ heroku login` command into the terminal
+7. Create `requirements.txt` ($ sudo pip3 freeze --local > requirements.txt)
+8. Create a `Procfile` (`$ echo web: python app.py > Procfile`)
+9. Go back to Heroku, under `Deploy` find `Existing Git repository` and copy the command:`$ heroku git:remote -a <app_name>` Paste this into the terminal.
+10. (If repository was not created already, type:
+11. `$ cd my-project/`
+12. `$ git init`
+13. `$ heroku git:remote -a <app_name>`)
+14. Type `$ heroku ps:scale web=1` into the terminal.
+15. Go back to Heroku, and at `Settings` copy `https://<app_name>.herokuapp.com/` 
+16. In the terminal type `git remote add http://<app_name>.herokuapp.com/`
+16. Type `git push -u heroku master`
+17. In the app dashboard, under `Settings` click on `Reveal Config Vars`
+21. Set "MONGO_URI" and "MONGO_DBNAME" and "SECRET_KEY"
+22. Once the build is complete, go back to Heroku and click on `Open App`
