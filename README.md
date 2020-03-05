@@ -208,6 +208,12 @@ The application structure and mobile-first layout was tested on Google Chrome, F
 | 7 |  donation | https://konyvkucko.<br>herokuapp.com/<br>donation | ![donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test6_donation_admin.png ) Admin | ![donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test6_donation_non_admin.png ) Not Admin  |  Passed |
 | 8 |  books | https://konyvkucko.<br>herokuapp.com/<br>books | ![books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test7_books_admin.png ) Admin | ![books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test7_books_non_admin.png ) Not Admin  |  Passed |
 
+#### Responsiveness test
+
+I used [Am I Responsive](http://ami.responsivedesign.is/#) as a responsiveness test.
+
+[Am I Responsive](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/responsive.png)
+
 #### Code Validation
 
 * CSS was validated using W3C CSS Validation Service - Jigsaw, no errors were found.
