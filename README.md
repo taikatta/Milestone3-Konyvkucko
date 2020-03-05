@@ -193,7 +193,7 @@ On Books page user can check more details about each book by clicking the `View`
 
 Throughout the development of the project, I carried out testing. I used the Chrome Developer Tools consistently.
 
-The application structure and mobile-first layout was tested on Google Chrome, Firefox and Safari. The application was tested on the following smartphone devices: Xiaomi, OnePlus6, iPhone11 and iPhone5. And on iPad tablet.
+The application structure and mobile-first layout was tested on Google Chrome, Firefox and Safari. The application was tested on the following smartphone devices: Xiaomi, OnePlus6, iPhone11 and iPhone5. And on iPad and BMAX tablets.
 
 #### Code Validation
 
