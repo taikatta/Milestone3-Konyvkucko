@@ -199,8 +199,9 @@ The application structure and mobile-first layout was tested on Google Chrome, F
 
 | Nr | Test          | Before image  | After image  | Test result |
 | ---|:-------------:| :-----:| :-----:| :-----:|
-| 1 | Library Link |    ![Book detail page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test1_library_link0.png "Book detail page") |![Library page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test1_library_link2.png "Library Link") | Passed |
+| 1 | Library Link |    ![Book detail page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test1_library_link0.png "Book detail page") |![Library page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test1_library_link1.png "Library Link") | Passed |
 | 2 |  add_book |   ![add_book as admin](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test2_add_book_admin.png "Admin") |![add_book as non admin](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test2_add_book_not_admin.png "Not Admin") |Passed |
+| 3 |  invalid book |   ![invalid book](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test3_invalid_book.png "Invalid book") | |Passed |
 
 #### Code Validation
 
