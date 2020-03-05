@@ -109,32 +109,32 @@ Sans-serif is used as the default backup font in case when Nunito Sans was not p
 
 Originally on the home page I wanted to have one background picture and 3 of our latest donated books, but then I discovered Parallax (Materialize). Parallax is an effect where the background image is moved at a different speed than the foreground content while scrolling, so I decided to use Parallax instead.
 
-[Mobile View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/initial_design_mobile_home.pdf)
+[Mobile View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_home.pdf)
 
-[Mobile View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/initial_design_mobile_donation.pdf)
+[Mobile View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_mobile_donation.pdf)
 
-[Desktop View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/initial_design_desktop_home.pdf)
+[Desktop View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_desktop_home.pdf)
 
-[Desktop View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/initial_design_desktop_donation.pdf)
+[Desktop View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/initial_design_desktop_donation.pdf)
 
 
 #### Final Wireframes:
 
-[Mobile View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_mobile_home.pdf)
+[Mobile View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_home.pdf)
 
-[Mobile View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_mobile_donation.pdf)
+[Mobile View - Donation](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_donation.pdf)
 
-[Mobile View - Books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_mobile_book.pdf)
+[Mobile View - Books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_book.pdf)
 
-[Mobile View - Books Admin View](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_mobile_book_admin_view.pdf)
+[Mobile View - Books Admin View](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_mobile_book_admin_view.pdf)
 
-[Desktop View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_desktop_home.pdf)
+[Desktop View - Home](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_home.pdf)
 
-[Desktop View - Donation Admin View](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_desktop_donation_admin_view.pdf)
+[Desktop View - Donation Admin View](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_donation_admin_view.pdf)
 
-[Desktop View - Books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_desktop_book.pdf)
+[Desktop View - Books](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_book.pdf)
 
-[Desktop View - Books Admin view](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/wireframes/final_design_desktop_book_admin_view.pdf)
+[Desktop View - Books Admin view](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_book_admin_view.pdf)
 
 [Back to Top](#table-of-contents)
 
