@@ -5,6 +5,11 @@ html {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+/*-------------------- Readme -----------------------*/
+.readme {
+  height: 100px;
+}
+
 /*------------------- Navbar -------------------------*/
 nav {
   background-color: #4284A4;
