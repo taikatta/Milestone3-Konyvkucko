@@ -6,13 +6,12 @@
             <div class="collection-item">
                 <div class="card">
                     <div class="col s10 m4 l3 card-image">
-                        <img src="{{ book.book_cover }}">
+                        <img src="{{ book.book_cover }}" alt="Link to Libraries Ireland">
                     </div>
                     <div class="col s12 m8 l9 card-content">
-                        <!-- Users are taken to the last page they visited, Go Back button from: https://www.computerhope.com/issues/ch000317.htm -->
-                        <div class="btn">
-                            <a class="go_back_button" type="button" value="Go back!" onclick="history.back()">Go Back!<i
-                                    class="material-icons right">arrow_back</i></a>
+                        <!-- Users are taken to the last page they visited, the Go Back button is from: https://www.computerhope.com/issues/ch000317.htm -->
+                        <div>
+                            <input class="btn go_back_button" type="button" value="Go Back!" onclick="history.back()">
                         </div>
                         <h5>{{book.author}}</h5>
                         <h5>{{book.book_title}}</h5>
