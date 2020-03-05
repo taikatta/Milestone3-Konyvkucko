@@ -212,7 +212,7 @@ The application structure and mobile-first layout was tested on Google Chrome, F
 
 I used [Am I Responsive](http://ami.responsivedesign.is/#) as a responsiveness test.
 
-[Am I Responsive](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/responsive.png)
+![Am I Responsive](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/responsive.png)
 
 #### Code Validation
 
