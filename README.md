@@ -195,6 +195,13 @@ Throughout the development of the project, I carried out testing. I used the Chr
 
 The application structure and mobile-first layout was tested on Google Chrome, Firefox and Safari. The application was tested on the following smartphone devices: Xiaomi, OnePlus6, iPhone11 and iPhone5. And on iPad and BMAX tablets.
 
+#### Functionality Test
+
+| Nr | Test          | Before image  | After image  | Test result |
+| ---|:-------------:| :-----:| :-----:| :-----:|
+| 1 | Library Link      |    ![Book details page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_library_link1.png"Book details page") |![Library page](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/test_library_link2.png "Library Link") | Passed |
+| 2 | Using invalid date      |   ![alt text](https://github.com/taikatta/Milestone2-DailyNASA/blob/master/assets/images/invalid_date1.png "Home") |![alt text](https://github.com/taikatta/Milestone2-DailyNASA/blob/master/assets/images/invalid_date2.png "12/12/2020") |Passed |
+
 #### Code Validation
 
 * CSS was validated using W3C CSS Validation Service - Jigsaw, no errors were found.
