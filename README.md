@@ -214,6 +214,15 @@ I used [Am I Responsive](http://ami.responsivedesign.is/#) as a responsiveness t
 
 ![Am I Responsive](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/responsive.png)
 
+#### Browser Compatibility test
+
+| Nr | Browser         | Image  | Test result |
+| ---|:-------------:| :---------------: | :-----:|
+| 1 | Chrome | ![Chrome](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/chrome.png) Chrome | Passed |
+| 2 | Safari | ![Safari](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/safari.png) Safari| Passed |
+| 3 | Firefox | ![Firefox](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/static/images/Test/firefox.png) Firefox | Passed |
+
+
 #### Code Validation
 
 * CSS was validated using W3C CSS Validation Service - Jigsaw, no errors were found.
