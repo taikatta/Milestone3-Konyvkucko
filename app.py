@@ -377,4 +377,4 @@ def generate_library_link(ISBN):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT', default=5000)),
-            debug=False)
+            debug=True)
