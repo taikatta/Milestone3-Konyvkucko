@@ -10,7 +10,7 @@
     - [User stories](#User-stories)
     - [Admin stories](#Admin-stories)
 
-4. [Design and colors](#Design-and-colors:)
+4. [Design and colors](#Design-and-colors)
     
 5. [Wireframes](#Wireframes)
 
@@ -22,17 +22,17 @@
 
 9. [Credits](#Credits)
 
-10. [Media](#Media)
+10. [DEPLOYMENT](#DEPLOYMENT)
 
-11. [Acknowledgements](#Acknowledgements)
-
-12. [DEPLOYMENT](#DEPLOYMENT)
+11. [Disclaimer](#Disclaimer)
 
 This is my third Milestone Project on the Full Stack Web Developer Code Institute course. For Data Centric Development module.
 
 ### Summary
 
 I am the founder of Könyvkuckó, the Hungarian Children's Library in Ireland. My book collection is about 120 books, all our books were donated. I got books from authors, organizations, individuals. The launch of the Hungarian children's book was on the 29th of October, 2019. The books are hosted by Deansgrange Library, but they can be requested via the inter-library loans system from other libraries who are part of Libraries Ireland. The requested books will be delivered to the users' local library.
+
+[Back to Top](#table-of-contents)
 
 ### Project purpose: 
 
@@ -55,7 +55,9 @@ On the top of the page the user can see the I would like to donate a book button
 Contains all the books that we are currently looking for. Users can donate any of them by clicking to the button next to the book. If users decide to donate a book that is not on the list, they can click on the button on top of the page. Admin sees a third button, as they can add a new book to the Wishlist.
 
 * Login / Register page
-I needed an admin account to delete/edit/add books, this is why I created the Login page. Any user can register here, but at the moment registration does not have any advantages. 
+I needed an admin account to delete/edit/add books, this is why I created the Login page. Any user can register here, but at the moment registration does not have any advantages.
+
+[Back to Top](#table-of-contents)
 
 ### UX
 
@@ -79,6 +81,8 @@ I needed an admin account to delete/edit/add books, this is why I created the Lo
 
 * As an admin I want to be able to move books from wishlist to donation list
 
+[Back to Top](#table-of-contents)
+
 ### Design and colors:
 
 #### Fonts:
@@ -93,10 +97,11 @@ Sans-serif is used as the default backup font in case when Nunito Sans was not p
 
 * ![#4284A4](https://placehold.it/15/4284A4/000000?text=+) #4284A4 - Primary background color
 
-* ![#60a0bf](https://placehold.it/15/60a0bf/000000?text=+) #60a0bf - Buuton hover color, Form input field label color, Datepicker hover color
+* ![#60a0bf](https://placehold.it/15/60a0bf/000000?text=+) #60a0bf - Button hover color, Form input field label color, Datepicker hover color
 
 * ![#5B8BA3](https://placehold.it/15/5B8BA3/000000?text=+) #5B8BA3 - 404 page text block background color
 
+[Back to Top](#table-of-contents)
 
 ### Wireframes:
 
@@ -131,13 +136,22 @@ Originally on the home page I wanted to have one background picture and 3 of our
 
 [Desktop View - Books Admin view](https://github.com/taikatta/Milestone3-Konyvkucko/blob/master/Wireframes/final_design_desktop_book_admin_view.pdf)
 
+[Back to Top](#table-of-contents)
+
 
 ### Features:
+
+#### Open Graph (OG):
+
+I shared Konvkucko's link with Messenger as I wanted the app to be tested on more different devices. When a link is shared there is a nice feature: a little preview of the link’s content, with title, short description and an image of the designated page. This data comes from scraping the link for `Open Graph (OG)` data. I added og meta tags to my base.html and used Sharing Debugger (facebook developer tools) to debug.
 
 #### Features Left to Implement:
 
 * As the application is about Hungarian books, for Hungarian families living in Ireland I plan to translate it Hungarian.
+
 * I would like to add a search bar, where users can search books by author, title and age category.
+
+[Back to Top](#table-of-contents)
 
 ### Technology Used:
 
@@ -160,7 +174,7 @@ Originally on the home page I wanted to have one background picture and 3 of our
 #### Tools Used:
 
 * <a href="https://www.mongodb.com/cloud/atlas">MongoDB</a> Is used to store the database in the cloud.
-* <a href="https://fonts.google.com/specimen/Nunito">Google Fonts</a>Used Nunito Sans fonts
+* <a href="https://fonts.google.com/specimen/Nunito">Google Fonts</a> Used Nunito Sans fonts
 * <a href="https://www.favicon-generator.org/">Favicon Generator</a> Used to find the right Favicon for the project.
 * <a href="https://compressjpeg.com/">compressjpg</a> Used to compress all my images.
 * <a href="https://www.canva.com/photos/">Canva photos</a> Used to find the background images.
@@ -169,11 +183,13 @@ Originally on the home page I wanted to have one background picture and 3 of our
 * <a href="https://moqups.com">moquaps</a> Used to create wireframes.
 * facebook for developers: I used the [Sharing Debugger](https://developers.facebook.com/tools/debug/) to see the information that is used when my website content is shared on Facebook, Messenger and other places.
 
+[Back to Top](#table-of-contents)
+
 ### Testing
 
 Throughout the development of the project, I carried out testing. I used the Chrome Developer Tools consistently.
 
-The application structure and mobile-first layout was tested on Google Chrome, Firefox and Safari. The application was tested on two smartphone devices, iPhone11 and iPhone5. And on one iPad.
+The application structure and mobile-first layout was tested on Google Chrome, Firefox and Safari. The application was tested on the following smartphone devices: Xiaomi, OnePlus6, iPhone11 and iPhone5. And on iPad tablet.
 
 #### Code Validation
 
@@ -188,13 +204,27 @@ The application structure and mobile-first layout was tested on Google Chrome, F
 Defensive design was built into each template in app.py file.
 
 * Only admin can add/ delete/ edit books, these buttons are hidden from users.
+
 * Flash warnings were used when user entered already taken username at registration, or wrong password/username when signing in.
+
+[Back to Top](#table-of-contents)
 
 ### Credits
 
-### Media
+* Book information (Summary, ISBN) are based on [Moly](https://moly.hu) 
 
-### Acknowledgements
+* I used Datepicker from course mini project
+
+* I use Materialize for card reveal (Books page), but wanted to change it to reveal the summary by hover.
+I got the solution from stack overflow: https://bit.ly/39S4X6f It worked fine when I set it up, but after a while the cards were only revealed after clicking on them. The reason for this was that in main.js I put Datepicker code before the Card hover and there was an error in Datepicker, so the Card hover code was never reached.
+
+#### Acknowledgements
+
+* Special thanks to my friends who made me add extra validations to my app.py. Originally when a user wanted to donate us a book and filled the form, the book was visible on the Donation page. I created an approved function, and now admin approval is needed before any new books are displayed. I also check if user is signed in and is admin, before they could add/ delete/ edit a book.
+
+* Many thanks to my mentor, Brian Macharia for support and advice throughout the project. You became my mentor when I started this milestone project and you always made sure to find the time for a mentor session when I needed you. Thank you!
+
+[Back to Top](#table-of-contents)
 
 ### DEPLOYMENT
 
@@ -231,3 +261,11 @@ Defensive design was built into each template in app.py file.
 17. In the app dashboard, under `Settings` click on `Reveal Config Vars`
 21. Set "MONGO_URI" and "MONGO_DBNAME" and "SECRET_KEY"
 22. Once the build is complete, go back to Heroku and click on `Open App`
+
+[Back to Top](#table-of-contents)
+
+### Disclaimer
+
+This project was created for educational use only.
+
+[Back to Top](#table-of-contents)
