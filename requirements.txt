@@ -19,7 +19,7 @@ chardet==3.0.4
 Click==7.0
 decorator==4.4.0
 defusedxml==0.6.0
-Django==3.2
+Django==3.2.1
 dnspython==1.16.0
 docutils==0.15.2
 entrypoints==0.3
