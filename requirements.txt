@@ -60,7 +60,7 @@ mistune==0.8.4
 more-itertools==8.4.0
 nbconvert==5.5.0
 nbformat==4.4.0
-notebook==6.4.4
+notebook==6.4.10
 numpy==1.21.5
 oauthlib==3.1.0
 packaging==20.4
