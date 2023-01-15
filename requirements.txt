@@ -35,7 +35,7 @@ Flask-PyMongo==2.3.0
 Flask-Session==0.3.1
 Flask-WTF==0.14.3
 gitdb==4.0.9
-GitPython==3.1.27
+GitPython==3.1.30
 google-api-core==1.22.1
 google-api-python-client==1.10.0
 google-auth==1.20.1
