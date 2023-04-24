@@ -1,3 +1,6 @@
 .DS_Store
 env.py
 __pycache__/
+Dockerfile
+docker-compose.yml
+init-mongo.js

@@ -1,0 +1,6 @@
+Flask
+Flask-Bcrypt
+Flask-Login
+Flask-PyMongo
+Flask-Session
+Flask-WTF

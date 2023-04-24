@@ -1,14 +1,14 @@
 import os
 import sys
+
 from bcrypt import checkpw, gensalt, hashpw
-from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask import (Flask, flash, redirect, render_template,
-                   request, session, url_for)
+from flask import (Flask, flash, redirect, render_template, request, session,
+                   url_for)
+from flask_pymongo import PyMongo
 
-
-if os.path.exists("env.py"):
-    import env
+# if os.path.exists("env.py"):
+#     import env
 
 """ Congfiguration of MongoDB with PyMongo """
 app = Flask(__name__)
@@ -330,7 +330,7 @@ def login():
     if login_user:
         if checkpw(
                 request.form['password'].encode('utf-8'),
-                login_user['password']):
+                login_user['password'].encode('utf-8')):
             session['username'] = request.form.to_dict()['username']
             return render_template("home.html", title='Home')
         flash('Invalid username/password combination!')
@@ -375,6 +375,6 @@ def generate_library_link(ISBN):
 
 
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT', default=5000)),
-            debug=False)
+    app.run(host=os.environ.get('IP', '0.0.0.0'),
+            port=int(os.environ.get('PORT', 5000)),
+            debug=True)
