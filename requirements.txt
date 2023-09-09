@@ -11,7 +11,7 @@ decorator==5.1.1
 Django==4.2.3
 entrypoints==0.4
 gitdb==4.0.10
-GitPython==3.1.30
+GitPython==3.1.35
 idna==3.4
 importlib-metadata==6.0.0
 Jinja2==3.1.2
