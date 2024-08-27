@@ -38,7 +38,7 @@ semver==2.13.0
 six==1.16.0
 smmap==5.0.0
 sqlparse==0.5.0
-streamlit==1.30.0
+streamlit==1.37.0
 tenacity==8.1.0
 toml==0.10.2
 toolz==0.12.0
